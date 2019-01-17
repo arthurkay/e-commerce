@@ -18,16 +18,16 @@ class BlogsTableSeeder extends Seeder
 
         for ( $i = 0 ; $i > 10; $i++ ) {
 
-            $title = $faker->word;
+            $title = $faker->word." ".$faker->word;
 
         Blog::create([
             'author' => $faker->name,
             'editor' => $faker->name,
             'body' => $faker->realText,
             'title' => $title,
-            'images' => '/home/arthur/Documents/Dev/vicfirm/storage/app/images/vbFa2C4kmAVPc0w8ydVWSQIm2ZCxFSKZ1kYNxFre.jpeg',
+            'images' => $faker->image('images', 800, 740),
             'views' => 0,
-            'slug' => str_slug($title)
+            'slug' => str_slug($title, "-")
         ]);
 
         }

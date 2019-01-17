@@ -11,7 +11,7 @@
 									$image = asset("storage/".$blog->image);
 									@endphp
 									<div class="col-md-4">
-									<img src="{{$image}}" alt="main-image" class="blog-head-image img-responsive"/>
+									<img src="{{ $image }}" alt="main-image" class="blog-head-image img-responsive"/>
 									<div class="image-overlay"></div>
                                 <a href="{{ $image }}" title="Enlarge" class="gallery-zoom"><i class="fa fa-eye"></i></a>
                                 <br />
