@@ -8,7 +8,7 @@
 					<div class="section-title text-center">
 						<h2>FAKA DUMPE</h2>
 						<p>	This is one of the latest products being provided by Vicfirm especially tailored for the home market. This service seeks to provide a link between consumer and supplier for easy and cashless transactions when purchasing fuel.<br />
--Vicfirm Financial Consultancy Ltd. Has partnered with local service stations to create a customer platform that will enable customers use their personal effects such as mobile phones to pay for fuel and it is being curbed "FAKA DUMPE" literally translated in local language meaning "Put and or pay for fuel"</p>
+Vicfirm Financial Consultancy Ltd. Has partnered with local service stations to create a customer platform that will enable customers use their personal effects such as mobile phones to pay for fuel and it is being curbed "FAKA DUMPE" literally translated in local language meaning "Put and or pay for fuel"</p>
 					</div>
 				</div>
 			</div>
@@ -19,10 +19,10 @@
 
 							<br />
 						 
-- Vicfirm Financial Consultancy Ltd. Will upload all customers whose full particulars and details such as kyc..know your customer will be evaluated and uploaded on data base. 
-- Vicfirm Reserves all rights by it's company policy to reject and allow customers to come on board
-- Vicfirm Financial Consultancy Ltd. Will facilitate all transactions from point of registration of customers to end use of product.
--Vicfirm Financial Consultancy shall provide 24hours online services to the customers
+Vicfirm Financial Consultancy Ltd. Will upload all customers whose full particulars and details such as kyc..know your customer will be evaluated and uploaded on data base. 
+Vicfirm Reserves all rights by it's company policy to reject and allow customers to come on board
+Vicfirm Financial Consultancy Ltd. Will facilitate all transactions from point of registration of customers to end use of product.
+Vicfirm Financial Consultancy shall provide 24hours online services to the customers
 						</p>
 
 						<ul class="withArrow">

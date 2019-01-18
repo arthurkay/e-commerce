@@ -15,9 +15,9 @@ $faker = \Faker\Factory::create();
 				<div class="col-md-6">
 					<div class="about-text">
 						<h3>Our <span class="color">Company</span></h3>
-						<p>{{ $faker->paragraph }}.</p> <br />
-						<p>{{ $faker->realText }}.</p><br />
-						<p>{{ $faker->paragraph }}.</p>
+						<p>Vicfirm Financial Consultancy Ltd is a platform of exposure founded to create an enabling environment for doing business. We support business to business, individuals, parastatals and Investors to navigate around and harness local and international opportunities timely and profitably.</p>
+						<p>After rigorous check and researching both on local and international markets, we at Vicfirm Financial Consultancy Ltd concluded that the link between local and international investors was weak. We understood the gap and provided the much needed chain connector or link. Most business houses especially foreign based suffer from lack of a platform and genuine dealers to penetrate local markets. We are the safest link and secure platform. Due to the gap in linking local and international businesses, the global village concept is defeated, and as such, Vicfirm seeks to bring both worlds together and support the one world business place.
+						</p>
 					</div>
 				</div>
 			</div>
@@ -28,7 +28,7 @@ $faker = \Faker\Factory::create();
 					<div class="about">
 				
 						
-						<div class="row">
+						<div class="row" style="display: none;">
 							<div class="col-md-6">
 								<!-- Heading and para -->
 								<div class="block-heading-two">

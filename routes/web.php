@@ -45,6 +45,6 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth']], function ()
 	Route::get('/viewproducts', 'Admin\MainController@vewProducts')->name('viewProducts');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true, 'register' => false]);
 
 Route::get('/home', 'MainController@index');
