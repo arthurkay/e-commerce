@@ -55,4 +55,9 @@ class MainController extends Controller
     	$title = "VicFirm Financial Consultancy LTD | Blogs";
         return view('blog_list', compact(['title','all_blogs']));
     }
+
+    public function products() {
+        $title = "VicFirm Financial Consultancy LTD | Products";
+        return view('products', compact(['title']));
+    }
 }

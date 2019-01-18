@@ -79,7 +79,7 @@ VicFirm Financial Consultancy LTD
                 (url()->current() == route('home')) ? $ah = 'active' : $ah = '';
                 (url()->current() == route('company')) ? $ac = 'active' : $ac = '';
                 (url()->current() == route('services')) ? $as = 'active' : $as = '';
-                (url()->current() == route('gallery')) ? $ag = 'active' : $ag = '';
+                (url()->current() == route('products')) ? $ag = 'active' : $ag = '';
                 (url()->current() == route('contact')) ? $aco = 'active' : $aco = '';
 				(url()->current() == route('blog_list')) ? $ab = 'active' : $ab = '';
                 @endphp
@@ -88,7 +88,7 @@ VicFirm Financial Consultancy LTD
                         <li class="{{$ah}}"><a class="waves-effect waves-dark" href="{{route('home')}}">Home</a></li> 
                         <li class="{{$ac}}"><a class="waves-effect waves-dark" href="{{route('company')}}">Company</a></li>
 						<li class="{{$as}}"><a class="waves-effect waves-dark" href="{{route('services')}}">Services</a></li>
-                        <li class="{{$ag}}"><a class="waves-effect waves-dark" href="{{route('gallery')}}">Gallery</a></li>
+                        <li class="{{$ag}}"><a class="waves-effect waves-dark" href="{{route('products')}}">Products</a></li>
                         <li class="{{$ab}}"><a class="waves-effect waves-dark" href="{{ route('blog_list') }}">News</a></li>
                         <li class="{{$aco}}"><a class="waves-effect waves-dark" href="{{route('contact')}}">Contact</a></li>
                     </ul>

@@ -177,5 +177,18 @@ class MainController extends Controller
  
     }
 
+    public function product() {
+
+    }
+
+    public function newProduct() {
+    	$user = Auth::user()->name;
+    	return view('Admin.newproduct', compact(['user']));
+    }
+
+    public function viewProducts() {
+
+    }
+
 
 }

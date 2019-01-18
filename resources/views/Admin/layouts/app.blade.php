@@ -6,7 +6,7 @@
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>Komakali Admin Panel</title>
+    <title>VicFirm Admin Panel</title>
     <!--== META TAGS ==-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -53,20 +53,7 @@
                     <a href="#"><i class="fa fa-search"></i></a>
                 </form>
             </div>
-
-            <!--== NOTIFICATION ==-->
-            <!-- <div class="col-md-2 tab-hide">
-                <div class="top-not-cen">
-                    <a class='waves-effect btn-noti' href='#'><i class="fa fa-commenting-o" aria-hidden="true"></i><span>5</span></a>
-                    <a class='waves-effect btn-noti' href='#'><i class="fa fa-envelope-o" aria-hidden="true"></i><span>5</span></a>
-                    <a class='waves-effect btn-noti' href='#'><i class="fa fa-tag" aria-hidden="true"></i><span>5</span></a>
-                </div>
-            </div> -->
-            <!--== MY ACCCOUNT ==-->
-            <div class="col-md-2 col-sm-3 col-xs-6">
-                <!-- Dropdown Trigger -->
-               <!--  <a class='waves-effect dropdown-button top-user-pro' href='#' data-activates='top-menu'><img src="{{asset('admin/images/placeholder.jpg')}}" alt="" />My Account <i class="fa fa-angle-down" aria-hidden="true"></i>
-                </a> -->
+            <div class="col-md-2 col-sm-3 col-xs-6">e
 
                 <!-- Dropdown Structure -->
                 <ul id='top-menu' class='dropdown-content top-menu-sty'>
@@ -92,7 +79,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div   >
     @php
     $msg_count = App\Message::where('status', 'unread')->count();
     @endphp
@@ -118,12 +105,22 @@
                         </li> -->
                         <li><a href=""><i class="fa fa-user" aria-hidden="true"></i> Users</a>
                         </li>
-                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Blog</a>
+                          <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-briefcase" aria-hidden="true"></i> Products</a>
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
-                                    <li><a href="{{route('blog')}}">Create Blog</a>
+                                    <li><a href="{{route('newProduct')}}">Create Product</a>
+                                      </li>
+                                    <li><a href="{{route('viewProducts')}}">View Products</a>
                                     </li>
-                                    <li><a href="{{route('blogs')}}">View Blogs</a>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-newspaper-o" aria-hidden="true"></i> News</a>
+                            <div class="collapsible-body left-sub-menu">
+                                <ul>
+                                    <li><a href="{{route('blog')}}">Create News</a>
+                                    </li>
+                                    <li><a href="{{route('blogs')}}">View News</a>
                                     </li>
                                 </ul>
                             </div>

@@ -22,6 +22,7 @@ Route::get('/news/{title}/{id}', 'MainController@view_blog')->name('view_blog');
 Route::get('/news', 'MainController@blog_list')->name('blog_list');
 Route::post('/message_store', 'Admin\MainController@message_store')->name('message_store');
 Route::get('policies', 'MainController@policies')->name('policies');
+Route::get('/products', 'MainController@products')->name('products');
 
 //Admin Panel
 
@@ -39,6 +40,9 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth']], function ()
 	Route::get('/deleteMsg/{id}', 'Admin\MainController@delete')->name('deleteMsg');
 	Route::get('/settings', 'Admin\MainController@settings')->name("settings");
 	Route::post('/passChange', 'Admin\MainController@passChange')->name('passChange');
+	Route::get('product', 'Admin\MainController@product')->name('product');
+	Route::get('/newproduct', 'Admin\MainController@newProduct')->name('newProduct');
+	Route::get('/viewproducts', 'Admin\MainController@vewProducts')->name('viewProducts');
 });
 
 Auth::routes();
