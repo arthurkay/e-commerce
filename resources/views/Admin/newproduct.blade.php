@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="post-auth" type="text" class="validate" name="authname" required value="{{ $user }}">
+                                        <input id="post-auth" type="text" class="validate" name="authname" required >
                                         <label for="post-auth">Price</label>
                                     </div>
                                 </div>

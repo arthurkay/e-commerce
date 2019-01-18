@@ -1,8 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@php
-$faker = \Faker\Factory::create();
-@endphp
 	
 	<section class="section-padding gray-bg">
 		<div class="container">
@@ -32,7 +29,7 @@ $faker = \Faker\Factory::create();
 							<li><span class="fa fa-angle-right"></span> Training for both local and  international business houses, enterpreneurship and non government organisations.</li>
 							<li><span class="fa fa-angle-right"></span> Provide Consultancy ranging from: </li>
 							<li><span class="fa fa-angle-right"></span>A) Setting up new business for local and International Investors.</li>
-							<li><span class="fa fa-angle-right"></span>B)Guide for Foreign Investors In Zambia.</li>
+							<li><span class="fa fa-angle-right"></span>B) Guide for Foreign Investors In Zambia.</li>
 							<li><span class="fa fa-angle-right"></span>C) Consultancy to donors or international non government organisations intending to fund local NGOs in Zambia and bordering countries.</li>
 						</ul>
 						

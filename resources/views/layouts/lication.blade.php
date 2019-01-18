@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>
-VicFirm Financial Consultancy LTD
-</title>
+<title>VicFirm Financial Consultancy LTD</title>
 <link type="image/png" rel="icon" href="{{asset('img/logo.png')}}" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
@@ -40,9 +38,9 @@ VicFirm Financial Consultancy LTD
 				<!-- social icon-->
 				<div class="col-sm-3">
 				   <ul class="social-network">
-					<li><a class="waves-effect waves-dark" href="https://facebook.com/komakaliengineering/"><i class="fa fa-facebook"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="https://facebook.com/"><i class="fa fa-facebook"></i></a></li>
 					<!--//<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>//-->
-					<li><a class="waves-effect waves-dark" href="https://www.linkedin.com/company/komakaliengineering"><i class="fa fa-linkedin"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
 					<!--//<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-pinterest"></i></a></li>
 					<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-google-plus"></i></a></li>//-->
 				</ul>
@@ -88,7 +86,7 @@ VicFirm Financial Consultancy LTD
                         <li class="{{$ah}}"><a class="waves-effect waves-dark" href="{{route('home')}}">Home</a></li> 
                         <li class="{{$ac}}"><a class="waves-effect waves-dark" href="{{route('company')}}">Company</a></li>
 						<li class="{{$as}}"><a class="waves-effect waves-dark" href="{{route('services')}}">Services</a></li>
-                        <li class="{{$ag}}"><a class="waves-effect waves-dark" href="{{route('products')}}">Products</a></li>
+                       <li class="{{$ag}}"><a class="waves-effect waves-dark" href="{{route('products')}}">Products</a></li>
                         <li class="{{$ab}}"><a class="waves-effect waves-dark" href="{{ route('blog_list') }}">News</a></li>
                         <li class="{{$aco}}"><a class="waves-effect waves-dark" href="{{route('contact')}}">Contact</a></li>
                     </ul>
@@ -113,7 +111,7 @@ VicFirm Financial Consultancy LTD
               <li>
                 <img src="{{ asset('img/slides/2.jpg') }}" alt="" />
                 <div class="flex-caption">
-                    <h3>Talented Team</h3> 
+                    <h3>Business Growth</h3> 
 					<p>Professional and Dependable</p> 
 					 
                 </div>
@@ -133,12 +131,13 @@ VicFirm Financial Consultancy LTD
 					<h5 class="widgetheading">Our Contact</h5>
 					<address>
 					<strong>VicFirm Financial Consultancy LTD</strong><br>
-					P.O Box 0000 <br />
-					Plot Number: 00, Somewhere,<br>
-					Lusaka, Zambia</address>
+					18 Bulevard Los Angeles Road Lusaka <br />
+					And<br />
+					Plot 312A Libala Lusaka.</address>
 					<p>
-						<i class="icon-phone"></i> (260) 979-040-0735 <br>
-						<i class="icon-envelope-alt"></i> VicFirmfinance@gmail.com
+						<i class="fa fa-phone"></i> +260977714224 <br>
+						<i class="fa fa-phone"></i> +260953020005 <br>
+						<i class="fa fa-envelope"></i> VicFirmfinance@gmail.com
 					</p>
 				</div>
 			</div>

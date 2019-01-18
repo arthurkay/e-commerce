@@ -86,23 +86,6 @@
 									<!-- Panel heading -->
 									 <div class="panel-heading">
 										<h4 class="panel-title">
-										  <a data-toggle="collapse" data-parent="#accordion-alt7" href="#collapseOne-alt7">
-											<i class="fa fa-angle-right"></i> ART WORK AND DESIGNS
-										  </a>
-										</h4>
-									 </div>
-									 <div id="collapseOne-alt7" class="panel-collapse collapse">
-										<!-- Panel body -->
-										<div class="panel-body">
-											<img src="{{ asset('img/artwork.jpg') }}" width="100px" height="100px" />
-										Art work and Art designs ranging from $1000 - $10,000
-										</div>
-									 </div>
-								  </div>
-								   <div class="panel">	
-									<!-- Panel heading -->
-									 <div class="panel-heading">
-										<h4 class="panel-title">
 										  <a data-toggle="collapse" data-parent="#accordion-alt8" href="#collapseOne-alt8">
 											<i class="fa fa-angle-right"></i> HOTEL BOOKINGS AND ACCOMODATION
 										  </a>

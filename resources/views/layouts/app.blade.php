@@ -38,9 +38,9 @@
 				<!-- social icon-->
 				<div class="col-sm-3">
 				   <ul class="social-network">
-					<li><a class="waves-effect waves-dark" href="https://facebook.com/komakaliengineering/"><i class="fa fa-facebook"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="https://facebook.com/"><i class="fa fa-facebook"></i></a></li>
 					<!--//<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>//-->
-					<li><a class="waves-effect waves-dark" href="https://www.linkedin.com/company/komakaliengineering"><i class="fa fa-linkedin"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
 					<!--//<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-pinterest"></i></a></li>
 					<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-google-plus"></i></a></li>//-->
 				</ul>
@@ -131,12 +131,13 @@
 					<h5 class="widgetheading">Our Contact</h5>
 					<address>
 					<strong>VicFirm Financial Consultancy LTD</strong><br>
-					P.O Box 0000 <br />
-					Plot Number: 00, Somewhere,<br>
-					Lusaka, Zambia</address>
+					18 Bulevard Los Angeles Road Lusaka <br />
+					And<br />
+					Plot 312A Libala Lusaka.</address>
 					<p>
-						<i class="icon-phone"></i> (260) 979-040-0735 <br>
-						<i class="icon-envelope-alt"></i> VicFirmfinance@gmail.com
+						<i class="fa fa-phone"></i> +260977714224 <br>
+						<i class="fa fa-phone"></i> +260953020005 <br>
+						<i class="fa fa-envelope"></i> VicFirmfinance@gmail.com
 					</p>
 				</div>
 			</div>
