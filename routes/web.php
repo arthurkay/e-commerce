@@ -42,7 +42,8 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth']], function ()
 	Route::post('/passChange', 'Admin\MainController@passChange')->name('passChange');
 	Route::get('product', 'Admin\MainController@product')->name('product');
 	Route::get('/newproduct', 'Admin\MainController@newProduct')->name('newProduct');
-	Route::get('/viewproducts', 'Admin\MainController@vewProducts')->name('viewProducts');
+	Route::get('/viewproducts', 'Admin\MainController@viewProducts')->name('viewProducts');
+	Route::post('addProduct', 'Admin\MainController@addProduct')->name('addProduct');
 });
 
 Auth::routes(['verify' => true, 'register' => false]);

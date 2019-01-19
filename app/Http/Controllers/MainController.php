@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Blog;
+use App\Product;
 
 class MainController extends Controller
 {
@@ -58,6 +59,8 @@ class MainController extends Controller
 
     public function products() {
         $title = "VicFirm Financial Consultancy LTD | Products";
-        return view('products', compact(['title']));
+
+        $products = Product::orderBy('id', 'desc')->paginate(10);
+        return view('products', compact(['title', 'products']));
     }
 }

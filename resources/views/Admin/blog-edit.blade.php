@@ -6,9 +6,9 @@
             {{ session('success') }}
             </div>
              @endif
-             @if (session('fail'))
+             @if (session('error'))
              <div class="alert alert-danger">
-                {{ session('fail') }}
+                {{ session('error') }}
             </div>
             @endif
                 <div class="sb2-2-add-blog sb2-2-1">

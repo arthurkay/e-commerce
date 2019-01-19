@@ -7,19 +7,18 @@
                {{ session('success') }}
                 </div>
                 @endif
-                @if (session('fail'))
+                @if (session('error'))
                 <div class="alert alert-danger">
-                {{ session('fail') }}
+                {{ session('error') }}
                 </div>
                 @endif
                 <div class="sb2-2-1">
-                    <h2>News</h2>
+                    <h2>Products</h2>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Heading</th>
-                                <th>Author</th>
+                                <th>Name</th>
                                 <th>Published-Date</th>
                                 <th>View</th>
                                 <th>Edit</th>
@@ -27,20 +26,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @if(!empty($blogs))
+                        @if(!empty($products))
                          @php
                           $i=1;
                           @endphp
-                        @foreach($blogs as $blog)
-                            <tr id="new{{$blog->id}}">
+                        @foreach($products as $product)
+                            <tr id="new{{$product->id}}">
                                 <td>{{$i}}</td>
-                                <td>{{$blog->title}}</td>
-                                <td>{{$blog->author}}</td>
-                                <td>{{date("d M Y", strtotime($blog->created_at))}}</td>
-                                <td><a href="{{route('view_blog', ['title' => $blog->slug, 'id' => $blog->id])}}" ><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                                <td><a href="{{route('blog_edit', ['title' => $blog->title, 'id' => $blog->id])}}" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <td>{{$product->name}}</td>
+                                <td>{{date("d M Y", strtotime($product->created_at))}}</td>
+                                <td><a href="" ><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                <td><a href="" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 </td>
-                                <td><a href="#" class="sb2-2-1-edit" onclick="deleteBlog('{{ $blog->id }}','{{ $blog->title }}')"><i class="fa fa-trash-o sb2-2-1-edit" aria-hidden="true"></i></a>
+                                <td><a href="#" class="sb2-2-1-edit" onclick="deleteBlog()"><i class="fa fa-trash-o sb2-2-1-edit" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                            @php $i++; @endphp
@@ -48,21 +46,12 @@
                             @endif
                         </tbody>
                     </table>
-                    {{ $blogs->render() }}
+                    {{ $products->links() }}
                 </div>
             </div>
         </div>
     </div>
 @endsection
 @section('script')
-<script>
-function deleteBlog(id, title) {
-    var evaluate = confirm("A you sure you want to delete ' "+title+" '");
-    if (evaluate == true) {
-        window.location.replace("{{ route('deleteBlog')}}/"+id);
-    }
-}
-</script>
-
 @endsection
 

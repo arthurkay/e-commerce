@@ -8,6 +8,8 @@ use App\User;
 use Auth;
 use App\Blog;
 use App\Message;
+use App\Product;
+use App\Image;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -81,7 +83,7 @@ class MainController extends Controller
 		return redirect()->back()->with('success', 'News updated succesfully');
 		}
 		else {
-			return redirect()->back()->with('fail', 'Sorry, unable to update News');
+			return redirect()->back()->with('error', 'Sorry, unable to update News');
 		}
 
 	}
@@ -188,6 +190,31 @@ class MainController extends Controller
 
     public function viewProducts() {
 
+        $user = Auth::user()->name;
+        $products = Product::orderBy('id', 'desc')->paginate(10);
+        return view('Admin.viewproducts', compact(['user', 'products']));
+    }
+
+    public function addProduct(Request $request) {
+        $product = new Product();
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->quantity = $request->quantity;
+        $product->price = $request->price;
+        $product->currency = $request->currency;
+
+        if ($product->save()) {
+            $product->images()->saveMany([
+            new Image(['image' => $request->file('image1')->store('products')]),
+            new Image(['image' => $request->file('image2')->store('products')]),
+            new Image(['image' => $request->file('image3')->store('products')]),
+            new Image(['image' => $request->file('image4')->store('products')])
+        ]);
+            return redirect()->back()->with('success', 'New Product successfully added!');
+        }
+        else {
+            return redirect()->back()->with('error', 'Sorry, unable to add product to system database');
+        }
     }
 
 

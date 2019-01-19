@@ -6,9 +6,9 @@
             {{ session('success') }}
             </div>
              @endif
-             @if (session('fail'))
+             @if (session('error'))
              <div class="alert alert-danger">
-                {{ session('fail') }}
+                {{ session('error') }}
             </div>
             @endif
                 <div class="sb2-2-add-blog sb2-2-1">
@@ -17,47 +17,83 @@
                             <h4>Add New Product</h4>
                         </div>
                         <div class="bor">
-                            <form id="news_form" method="post" enctype="multipart/form-data" action="{{ route('addNews') }}">
+                            <form id="news_form" method="post" enctype="multipart/form-data" action="{{ route('addProduct') }}">
                              {{ csrf_field() }}  
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="list-title" type="text" class="validate" name="name" required>
                                         <label for="list-title">Product Name</label>
                                     </div>
+                                </div>
                                     <div class="input-field col s12">
                                         <div class="file-field">
                                             <div class="btn">
-                                                <span>File</span>
-                                                <input type="file" name="image" required>
+                                                <span>Image 1</span>
+                                                <input type="file" name="image1" required>
                                             </div>
                                             <div class="file-path-wrapper">
                                                 <input class="file-path validate" type="text" placeholder="Product Banner">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="input-field col s12">
+                                        <div class="file-field">
+                                            <div class="btn">
+                                                <span>Image 2</span>
+                                                <input type="file" name="image2" required>
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text" placeholder="Product Banner">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <div class="file-field">
+                                            <div class="btn">
+                                                <span>Image 3</span>
+                                                <input type="file" name="image3" required>
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text" placeholder="Product Banner">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <div class="file-field">
+                                            <div class="btn">
+                                                <span>Image 4</span>
+                                                <input type="file" name="image4" required>
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text" placeholder="Product Banner">
+                                            </div>
+                                        </div>
+                                    </div>
                                 <div class="row">
                                      <div class="input-field col s12">
-                                        <input id="list-title" type="text" class="validate" name="name" required>
+                                        <input id="list-title" type="text" class="validate" name="description" required>
                                         <label for="list-title">Product Description</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="post-auth" type="text" class="validate" name="authname" required >
-                                        <label for="post-auth">Price</label>
+                                        <input id="price" type="number" class="validate" name="price" required >
+                                        <label for="price">Price</label>
                                     </div>
                                 </div>
                                   <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="post-auth" type="number" class="validate" name="authname" >
-                                        <label for="post-auth">Quantity</label>
+                                        <input id="quantity" type="number" class="validate" name="quantity" >
+                                        <label for="quantity">Quantity</label>
                                     </div>
                                 </div>
                                   <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="post-auth" type="text" class="validate" name="authname" required >
-                                        <label for="post-auth">Currency</label>
+                                        <select id="currency" class="validate" name="currency" required >
+                                            <option value="$">Dollar</option>
+                                            <option value="K">Zambian Kwacha</option>
+                                        </select>
+                                        <label for="currency">Currency</label>
                                     </div>
                                 </div>
                                 <div class="row">

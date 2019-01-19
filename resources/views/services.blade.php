@@ -31,6 +31,23 @@
 										</div>
 									 </div>
 								  </div>
+								  <div class="panel">	
+									<!-- Panel heading -->
+									 <div class="panel-heading">
+										<h4 class="panel-title">
+										  <a data-toggle="collapse" data-parent="#accordion-alt2" href="#collapseOne-alt2">
+											<i class="fa fa-angle-right"></i> FAKA DUMPE
+										  </a>
+										</h4>
+									 </div>
+									 <div id="collapseOne-alt2" class="panel-collapse collapse">
+										<!-- Panel body -->
+										<div class="panel-body">
+											<img src="{{ asset('img/fuel.jpg') }}" width="100px" height="100px" />
+										FAKA DUMPE-PAY FOR FUEL. Ranges from $10-$2000
+										</div>
+									 </div>
+								  </div>
 								   <div class="panel">	
 									<!-- Panel heading -->
 									 <div class="panel-heading">
@@ -95,7 +112,7 @@
 										<!-- Panel body -->
 										<div class="panel-body">
 											<img src="{{ asset('img/bookings.jpeg') }}" width="100px" height="100px" />
-										RangeS from $100-$500
+										Ranges from $100-$500
 										</div>
 									 </div>
 								  </div>
