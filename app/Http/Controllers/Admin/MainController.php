@@ -10,6 +10,7 @@ use App\Blog;
 use App\Message;
 use App\Product;
 use App\Image;
+use App\Profile;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -215,6 +216,12 @@ class MainController extends Controller
         else {
             return redirect()->back()->with('error', 'Sorry, unable to add product to system database');
         }
+    }
+
+    public function profile() {
+        $user = Auth::user()->name;
+        $profile = Profile::get();
+        return view('Admin.profile', compact(['user', 'profile']));
     }
 
 

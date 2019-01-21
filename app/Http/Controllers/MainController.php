@@ -63,4 +63,14 @@ class MainController extends Controller
         $products = Product::orderBy('id', 'desc')->paginate(10);
         return view('products', compact(['title', 'products']));
     }
+
+    public function productDetails($id, $title) {
+        
+        $product = Product::find($id);
+
+        $title = "VicFirm Financial Consultancy LTD | ".$product->name;
+
+        $products = Product::orderBy('id', 'desc')->paginate(10);
+        return view('productDetails', compact(['title', 'products', 'product']));
+    }
 }

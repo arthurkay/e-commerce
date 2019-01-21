@@ -23,6 +23,7 @@ Route::get('/news', 'MainController@blog_list')->name('blog_list');
 Route::post('/message_store', 'Admin\MainController@message_store')->name('message_store');
 Route::get('policies', 'MainController@policies')->name('policies');
 Route::get('/products', 'MainController@products')->name('products');
+Route::get('/products/{id}/{title}', 'MainController@productDetails')->name('productDetails');
 
 //Admin Panel
 
@@ -44,6 +45,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth']], function ()
 	Route::get('/newproduct', 'Admin\MainController@newProduct')->name('newProduct');
 	Route::get('/viewproducts', 'Admin\MainController@viewProducts')->name('viewProducts');
 	Route::post('addProduct', 'Admin\MainController@addProduct')->name('addProduct');
+	Route::get('company-profile', 'Admin\MainController@profile')->name('profile');
 });
 
 Auth::routes(['verify' => true, 'register' => false]);

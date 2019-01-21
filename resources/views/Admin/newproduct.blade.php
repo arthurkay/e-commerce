@@ -28,47 +28,17 @@
                                     <div class="input-field col s12">
                                         <div class="file-field">
                                             <div class="btn">
-                                                <span>Image 1</span>
-                                                <input type="file" name="image1" required>
+                                                <span>Image</span>
+                                                <input type="file" name="image1" required class="img-more">
                                             </div>
                                             <div class="file-path-wrapper">
                                                 <input class="file-path validate" type="text" placeholder="Product Banner">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="input-field col s12">
-                                        <div class="file-field">
-                                            <div class="btn">
-                                                <span>Image 2</span>
-                                                <input type="file" name="image2" required>
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path validate" type="text" placeholder="Product Banner">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="input-field col s12">
-                                        <div class="file-field">
-                                            <div class="btn">
-                                                <span>Image 3</span>
-                                                <input type="file" name="image3" required>
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path validate" type="text" placeholder="Product Banner">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="input-field col s12">
-                                        <div class="file-field">
-                                            <div class="btn">
-                                                <span>Image 4</span>
-                                                <input type="file" name="image4" required>
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path validate" type="text" placeholder="Product Banner">
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                    <div id="moreImages"></div>
+        
                                 <div class="row">
                                      <div class="input-field col s12">
                                         <input id="list-title" type="text" class="validate" name="description" required>
@@ -111,7 +81,14 @@
     @endsection
     @section('script')
     <script>
-    CKEDITOR.replace( 'data' );
+
+    $(() => {
+        $(".img-more").change(() => {
+            //console.log('Event Triggered');
+            $("#moreImages").append(
+                " <div class='input-field col s12'> <div class='file-field'><div class='btn'><span>Image</span><input type='file' name='image1' required class='img-more'></div><div class='file-path-wrapper'><input class='file-path validate' type='text' placeholder='Product Banner'></div></div></div>");
+        });
+    });
 
     </script>
     @endsection

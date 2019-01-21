@@ -14,37 +14,14 @@
 									@foreach( $products as $product)
 									<div class="row col-md-6">
 									<h3> {{ $product->name }} </h3><br />
-									<div class="slideshow-container">
-										@php
-										$no = 1;
-										@endphp
-										@foreach( $product->images()->where('product_id', $product->id)->get() as $image)
-										
-										<div class="mySlides">
-    									<div class="numbertext">{{ $no }}/ 4</div>
+									@php
+									 $image = $product->images()->where('product_id', $product->id)->first();
+									@endphp
+									<a href="{{ route('productDetails', ['id' => $product->id, 'title' => $product->name]) }}">
 										<img src="{{ asset('storage/'.$image->image) }}" width="100%" />
-										<div class="text">{{ $product->name }}</div>
-  										</div>
-  										
-										@php
-										$no++;
-										@endphp
-										@endforeach
-
-										<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-										<a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-										</div>
-										<br>
-
-										<div style="text-align:center">
-  										<span class="dot" onclick="currentSlide(1)"></span> 
-  										<span class="dot" onclick="currentSlide(2)"></span> 
-  										<span class="dot" onclick="currentSlide(3)"></span>
-
-  										<span class="dot" onclick="currentSlide(4)"></span> 
-										</div>
-										<p> {{ $product->description }}</p><br />
+										<p> {{ $product->description }}</p>
+									</a>
+									<br />
 										<label class="alert alert-success">Buy {{ $product->currency }} {{ $product->price }} &nbsp;</label>
 									</div>  
 									@endforeach

@@ -147,7 +147,7 @@
 					<ul class="link-list">
 						<li><a class="waves-effect waves-dark" href="#">Latest Events</a></li>
 						<li><a class="waves-effect waves-dark" href="#">Terms and conditions</a></li>
-						<li><a class="waves-effect waves-dark" href="#">Privacy policy</a></li>
+						<li><a class="waves-effect waves-dark" href="{{ route('policies') }}">Privacy policy</a></li>
 						<li><a class="waves-effect waves-dark" href="#">Career</a></li>
 						<li><a class="waves-effect waves-dark" href="{{route('contact')}}">Contact us</a></li>
 					</ul>
