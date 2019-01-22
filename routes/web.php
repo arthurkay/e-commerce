@@ -46,6 +46,12 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth']], function ()
 	Route::get('/viewproducts', 'Admin\MainController@viewProducts')->name('viewProducts');
 	Route::post('addProduct', 'Admin\MainController@addProduct')->name('addProduct');
 	Route::get('company-profile', 'Admin\MainController@profile')->name('profile');
+	Route::get('edit-product/{id}', 'Admin\MainController@editProduct')->name('editProduct');
+	Route::get('delete-product/{id?}', 'Admin\MainController@deleteProduct')->name('deleteProduct');
+	Route::get('edit-product-images/{id}', 'Admin\MainController@productImages')->name('productImages');
+	Route::post('save-changes', 'Admin\MainController@saveProduct')->name('saveProduct');
+	Route::post('save-product-images', 'Admin\MainController@saveProductImages')->name('saveProductImages');
+	Route::get('delete-image/{id?}', 'Admin\MainController@deleteImage')->name('deleteImage');
 });
 
 Auth::routes(['verify' => true, 'register' => false]);

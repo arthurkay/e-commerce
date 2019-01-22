@@ -11,6 +11,7 @@ use App\Message;
 use App\Product;
 use App\Image;
 use App\Profile;
+use App\Category;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -185,8 +186,9 @@ class MainController extends Controller
     }
 
     public function newProduct() {
+        $category = Category::get();
     	$user = Auth::user()->name;
-    	return view('Admin.newproduct', compact(['user']));
+    	return view('Admin.newproduct', compact(['user', 'category']));
     }
 
     public function viewProducts() {
@@ -203,14 +205,17 @@ class MainController extends Controller
         $product->quantity = $request->quantity;
         $product->price = $request->price;
         $product->currency = $request->currency;
+        $product->category = $request->category;
 
         if ($product->save()) {
-            $product->images()->saveMany([
-            new Image(['image' => $request->file('image1')->store('products')]),
-            new Image(['image' => $request->file('image2')->store('products')]),
-            new Image(['image' => $request->file('image3')->store('products')]),
-            new Image(['image' => $request->file('image4')->store('products')])
-        ]);
+            
+                foreach( $request->images as $image ) {
+                    Image::create([
+                        'product_id' => $product->id,
+                        'image' => $image->store('products')
+                    ]);
+                }
+        
             return redirect()->back()->with('success', 'New Product successfully added!');
         }
         else {
@@ -222,7 +227,100 @@ class MainController extends Controller
         $user = Auth::user()->name;
         $profile = Profile::get();
         return view('Admin.profile', compact(['user', 'profile']));
+	}
+	
+	public function editProduct($id) {
+		
+        $product = Product::find($id);
+
+		$user = Auth::user()->name;
+		
+        return view('Admin.editProduct', compact(['user', 'product']));
     }
 
+    public function saveProduct(Request $request) {
+        
+        $product = Product::find($request->id);
+
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->quantity = $request->quantity;
+        $product->price = $request->price;
+        $product->currency = $request->currency;
+
+        if ($product->save()) {
+            return redirect()->back()->with('success', 'Changes successfully saved!');
+        }
+        else {
+            return redirect()->back()->with('error', 'Sorry, system unable to update database');
+        }
+    }
+
+    public function productImages($id) {
+
+        $images = Image::where('product_id', $id)->get();
+
+        $product = Product::find($id);
+
+        $user = Auth::user()->name;
+        
+        return view('Admin.productImages', compact(['user', 'images', 'product']));
+    }
+
+    public function saveProductImages( Request $request ) {
+
+        $product_id = $request->id;
+        $images = $request->images;
+        $pictures = $request->pictures;
+
+
+        if ($request->hasFile('images')) {
+        
+        foreach( $images as $image ) {
+
+            Image::create([
+                'product_id' => $product_id,
+                'image' => $image->store('products')
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Images added successfully');
+    }
+    else {
+        return redirect()->back()->with('error', 'Sorry, the request was made without a file');
+    }
+
+    }
+
+    public function deleteImage( $id ) {
+        
+        $image = Image::find($id);
+        
+        $file = $image->image;
+
+        if ($image->delete()) {
+            unlink(storage_path('app/'.$file));
+            return redirect()->back()->with('success', 'Image Deleted successfully');
+        }
+        else {
+            return redirect()->back()->with('error', 'Sorry, unable to delete file');
+        }
+    }
+
+    public function deleteProduct( $id ) {
+        $product = Product::find($id);
+
+        $images = Image::where('product_id', $id)->get();
+
+        if ($product->delete()) {
+            foreach( $images as $image) {
+                unlink(storage_path('app/'.$image->image));
+            }
+            return redirect()->back()->with('success', 'Product deleted successfully');
+        }
+        else {
+            return redirect()->back()->with('error', 'Sorry, system unable to delete product');
+        }
+    }
 
 }

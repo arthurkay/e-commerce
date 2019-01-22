@@ -15,17 +15,25 @@
 										@php
 										$no = 1;
 										@endphp
+
 										@foreach( $product->images()->where('product_id', $product->id)->get() as $image)
 										
+										@php
+										$total = $product->images()->where('product_id', $product->id)->count()
+										@endphp
+
 										<div class="mySlides">
-    									<div class="numbertext">{{ $no }}/ 4</div>
+    									<div class="numbertext">{{ $no }}/ {{ $total }}</div>
+    									@if ($image)
 										<img src="{{ asset('storage/'.$image->image) }}" width="100%" />
+										@endif
 										<div class="text">{{ $product->name }}</div>
   										</div>
   										
 										@php
 										$no++;
 										@endphp
+
 										@endforeach
 
 										<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -35,11 +43,12 @@
 										<br>
 
 										<div style="text-align:center">
-  										<span class="dot" onclick="currentSlide(1)"></span> 
-  										<span class="dot" onclick="currentSlide(2)"></span> 
-  										<span class="dot" onclick="currentSlide(3)"></span>
-
-  										<span class="dot" onclick="currentSlide(4)"></span> 
+											@php
+											$slides = 1;
+											@endphp
+											@for( $i = 1; $i <= $total; $i++ )
+  										<span class="dot" onclick="currentSlide({{ $i }})"></span>
+  											@endfor 
 										</div>
 										<p> {{ $product->description }}</p><br />
 										<label class="alert alert-success">Buy {{ $product->currency }} {{ $product->price }} &nbsp;</label>
@@ -57,7 +66,9 @@
 									 $image = $offer->images()->where('product_id', $offer->id)->first();
 									@endphp
 									<a href="{{ route('productDetails', ['id' => $offer->id, 'title' => $offer->name]) }}">
+										@if ($image)
 										<img src="{{ asset('storage/'.$image->image) }}" width="100%" />
+										@endif
 										<p> {{ $offer->description }}</p>
 									</a>
 									<br />

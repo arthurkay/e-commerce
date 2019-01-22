@@ -14,64 +14,63 @@
                 <div class="sb2-2-add-blog sb2-2-1">
                     <div class="box-inn-sp">
                         <div class="inn-title">
-                            <h4>Add New Product</h4>
+                            <h4>Edit: {{ $product->name }}</h4>
                         </div>
                         <div class="bor">
-                            <form id="news_form" method="post" enctype="multipart/form-data" action="{{ route('addProduct') }}">
+                            <form id="news_form" method="post" enctype="multipart/form-data" action="{{ route('saveProduct') }}">
                              {{ csrf_field() }}  
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="list-title" type="text" class="validate" name="name" required>
+                                        <input id="list-title" type="text" class="validate" value="{{ $product->name }}" name="name" required>
                                         <label for="list-title">Product Name</label>
                                     </div>
                                 </div>
                                     <div class="input-field col s12">
                                         <div class="file-field">
                                             <div class="btn">
+                                                <a href="{{ route('productImages', ['id' => $product->id]) }}">
                                                 <span>Image</span>
-                                                <input type="file" name="images[]" multiple required class="img-more">
+                                               </a>
                                             </div>
                                             <div class="file-path-wrapper">
-                                                <input class="file-path validate" type="text" placeholder="Product Banner">
+                                                <input class="file-path validate" type="text" placeholder="Edit Images for this product" disabled>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div id="moreImages"></div>
+                                    <input type="hidden" value="{{ $product->id }}" name="id" />
         
                                 <div class="row">
                                      <div class="input-field col s12">
-                                        <input id="list-title" type="text" class="validate" name="description" required>
+                                        <input id="list-title" type="text" class="validate" value="{{ $product->description }}" name="description" required>
                                         <label for="list-title">Product Description</label>
                                     </div>
                                 </div>
                                 <div class="row">
-                                     <div class="input-field col s12">
-                                        <select id="list-title" class="validate" name="category" required>
-                                            @foreach( $category as $option )
-                                            <option value="{{ $option->id }}">{{ $option->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        <label for="list-title">Products Category</label>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="price" type="number" class="validate" name="price" required >
+                                        <input id="price" type="number" class="validate" name="price" required value="{{ $product->price }}">
                                         <label for="price">Price</label>
                                     </div>
                                 </div>
                                   <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="quantity" type="number" class="validate" name="quantity" >
+                                        <input id="quantity" type="number" class="validate" name="quantity" value="{{ $product->quantity }}">
                                         <label for="quantity">Quantity</label>
                                     </div>
                                 </div>
                                   <div class="row">
                                     <div class="input-field col s12">
                                         <select id="currency" class="validate" name="currency" required >
-                                            <option value="$">Dollar</option>
-                                            <option value="K">Zambian Kwacha</option>
+                                            <option 
+                                            @if ($product->currency == "$")
+                                            {{ _('selected') }}
+                                            @endif
+                                            value="$">Dollar</option>
+                                            <option 
+                                            @if ($product->currency == "K")
+                                            {{ _('selected') }}
+                                            @endif
+                                            value="K">Zambian Kwacha</option>
                                         </select>
                                         <label for="currency">Currency</label>
                                     </div>
@@ -90,16 +89,5 @@
     </div>
     @endsection
     @section('script')
-    <script>
-/*
-    $(() => {
-        $(".img-more").change(() => {
-            //console.log('Event Triggered');
-            $("#moreImages").append(
-                " <div class='input-field col s12'> <div class='file-field'><div class='btn'><span>Image</span><input type='file' name='image1' required class='img-more'></div><div class='file-path-wrapper'><input class='file-path validate' type='text' placeholder='Product Banner'></div></div></div>");
-        });
-    });
-*/
-    </script>
     @endsection
    

@@ -35,10 +35,10 @@
                                 <td>{{$i}}</td>
                                 <td>{{$product->name}}</td>
                                 <td>{{date("d M Y", strtotime($product->created_at))}}</td>
-                                <td><a href="" ><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                                <td><a href="" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <td><a href="{{ route('productDetails', ['id' => $product->id, 'title' => $product->name]) }}" ><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                                <td><a href="{{ route('editProduct', ['id' => $product->id]) }}" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 </td>
-                                <td><a href="#" class="sb2-2-1-edit" onclick="deleteBlog()"><i class="fa fa-trash-o sb2-2-1-edit" aria-hidden="true"></i></a>
+                                <td><a href="#" class="sb2-2-1-edit" onclick="deleteProduct({{ $product->id }})"><i class="fa fa-trash-o sb2-2-1-edit" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                            @php $i++; @endphp
@@ -53,5 +53,17 @@
     </div>
 @endsection
 @section('script')
+<script>
+    function deleteProduct(id) {
+        var c = confirm("Are you sure you want to delete this product?");
+
+        if (c) {
+            window.location = "{{ route('deleteProduct') }}/"+id
+        }
+    }
+</script>
 @endsection
+
+
+
 

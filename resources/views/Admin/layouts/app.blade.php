@@ -178,8 +178,7 @@
 <!--     <script src="https://cdn.ckeditor.com/4.9.0/standard/ckeditor.js"></script>
  -->
 </body>
-
+@yield('script')
 
 <!-- Mirrored from rn53themes.net/themes/demo/lava-admin/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 22 May 2017 09:34:48 GMT -->
 </html>
-@yield('script')
