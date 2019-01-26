@@ -3,20 +3,11 @@
 	
 	<section class="section-padding gray-bg">
 		<div class="container">
+			<h3>Our<span class="color"> {{ $category }} products</span></h3>
 			<div class="col-md-10">
-				@foreach($categories as $category)
-				<div class="row">
-				<div class="card">
-					<div class="card-header">
-						{{ $category->name }}
-					</div>
-					<div class="card-body">
-						@php
-						$products = App\Product::where('category', $category->id)->limit(6)->get();
-						@endphp
-						@foreach($products as $product)
-						<div class="col-md-2">
-							<h3> {{ $product->name }} </h3><br />
+				@foreach( $products as $product)
+									<div class="row col-md-3">
+									<h3> {{ $product->name }} </h3><br />
 									@php
 									 $image = $product->images()->where('product_id', $product->id)->first();
 									@endphp
@@ -24,15 +15,13 @@
 										@if ($image)
 										<img src="{{ asset('storage/'.$image->image) }}" width="100%" />
 										@endif
+										<p> {{ $product->description }}</p>
 									</a>
 									<br />
 										<label class="alert alert-success">Buy {{ $product->currency }} {{ $product->price }} &nbsp;</label>
-						</div>
-						@endforeach
-					</div>
-				</div>
-			</div>
-				@endforeach
+									</div>  
+									@endforeach
+									{{ $products->render() }}
 			</div>
 			<div class="col-md-2">
 			@foreach($categories as $category)

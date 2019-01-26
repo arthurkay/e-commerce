@@ -25,6 +25,12 @@ Route::get('policies', 'MainController@policies')->name('policies');
 Route::get('/products', 'MainController@products')->name('products');
 Route::get('/products/{id}/{title}', 'MainController@productDetails')->name('productDetails');
 
+//Product category
+
+Route::group(['prefix' => 'product'], function() {
+	Route::get('{id}/{name}', 'MainController@categories')->name('categories');
+});
+
 //Admin Panel
 
 Route::group(['prefix' => 'admin',  'middleware' => ['auth']], function ()

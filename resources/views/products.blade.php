@@ -27,6 +27,9 @@
 										<label class="alert alert-success">Buy {{ $product->currency }} {{ $product->price }} &nbsp;</label>
 									</div>  
 									@endforeach
+									<div class="">
+										{{ $products->render() }}
+									</div>
 						</div>
 				
 	</div>

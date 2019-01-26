@@ -5,40 +5,44 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 use App\Product;
+use App\Category;
 
 class MainController extends Controller
 {
     public function index() {
-        $title = "VicFirm Financial Consultancy LTD | Your Financial Partner";
-        return view('home', compact(['title']));
+        $title = "Matre Logistics LTD | One Store, Global Reach";
+        $categories = Category::get();
+        return view('home', compact(['title', 'categories']));
     }
 
     public function company() {
-    	$title = "VicFirm Financial Consultancy LTD | About Us";
+    	$title = "Matre Logistics LTD | About Us";
     	$page_name = "About us";
         return view('company', compact(['title', 'page_name']));
     }
 
     public function contact() {
-    	$title = "VicFirm Financial Consultancy LTD | Contact Us";
+    	$title = "Matre Logistics LTD | Contact Us";
     	$page_name = "Contact us";
-        return view('contact', compact(['title', 'page_name']));
+        $categories = Category::get();
+        return view('contact', compact(['title', 'page_name', 'categories']));
     }
 
     public function gallery() {
-    	$title = "VicFirm Financial Consultancy LTD | Gallery";
+    	$title = "Matre Logistics LTD | Gallery";
     	$page_name = "Gallery";
         return view('gallery', compact(['title', 'page_name']));
     }
 
     public function services() {
-    	$title = "VicFirm Financial Consultancy LTD | Our Services";
+    	$title = "Matre Logistics LTD | Our Services";
     	$page_name = "Our Services";
-        return view('services', compact(['title', 'page_name']));
+        $categories = Category::get();
+        return view('services', compact(['title', 'page_name', 'categories']));
     }
 
     public function policies() {
-    	$title = "VicFirm Financial Consultancy LTD | Our Policies";
+    	$title = "Matre Logistics LTD | Our Policies";
     	$page_name = "Our Policies";
         return view('policies', compact(['title', 'page_name']));
     }
@@ -46,40 +50,43 @@ class MainController extends Controller
     public function view_blog($title, $id) {
         $blog = Blog::find($id);
         $all_blogs = Blog::orderBy('id', 'desc')->paginate(7);
-    	$title = "VicFirm Financial Consultancy LTD | ".$blog->title;
+    	$title = "Matre Logistics LTD | ".$blog->title;
     	$blog_title = $blog->title;
-        return view('view_blog', compact(['title', 'blog_title', 'blog','all_blogs']));
+        $categories = Category::get();
+        return view('view_blog', compact(['title', 'blog_title', 'blog','all_blogs', 'categories']));
     }
 
     public function blog_list() {
         $all_blogs = Blog::orderBy('id','desc')->paginate(10);
-    	$title = "VicFirm Financial Consultancy LTD | Blogs";
-        return view('blog_list', compact(['title','all_blogs']));
+    	$title = "Matre Logistics LTD | Blogs";
+        $categories = Category::get();
+        return view('blog_list', compact(['title','all_blogs', 'categories']));
     }
 
     public function products() {
-        $title = "VicFirm Financial Consultancy LTD | Products";
-
+        $title = "Matre Logistics LTD | Products";
+        $categories = Category::get();
         $products = Product::orderBy('id', 'desc')->paginate(10);
-        return view('products', compact(['title', 'products']));
+        return view('products', compact(['title', 'products', 'categories']));
     }
 
     public function productDetails($id, $title) {
         
         $product = Product::find($id);
-
-        $title = "VicFirm Financial Consultancy LTD | ".$product->name;
-
-        $products = Product::orderBy('id', 'desc')->paginate(10);
-        return view('productDetails', compact(['title', 'products', 'product']));
-    }
-
-    public function editProduct($id) {
-        $product = Product::find($id);
-
-        $title = "VicFirm Financial Consultancy LTD | ".$product->name;
+        $categories = Category::get();
+        $title = "Matre Logistics LTD | ".$product->name;
 
         $products = Product::orderBy('id', 'desc')->paginate(10);
-        return view('editProduct', compact(['title', 'products', 'product']));
+        return view('productDetails', compact(['title', 'products', 'product', 'categories']));
     }
+
+    public function categories($id, $name) {
+        $title = "Matre Logistics LTD | ".$name;
+        $categories = Category::get();
+        $catGroup = Category::find($id);
+        $category = $catGroup->name;
+        $products = Product::where('category', $id)->paginate(12);
+        return view('categories', compact(['title', 'categories', 'category', 'products']));
+    }
+
 }

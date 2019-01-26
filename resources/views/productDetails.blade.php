@@ -9,7 +9,7 @@
 									<h3>|<span class="color"> {{ $product->name }} </span></h3>
 								</div>
 					
-									<div class="row col-md-6">
+									<div class="row col-md-8">
 
 									<div class="slideshow-container">
 										@php
@@ -52,6 +52,23 @@
 										</div>
 										<p> {{ $product->description }}</p><br />
 										<label class="alert alert-success">Buy {{ $product->currency }} {{ $product->price }} &nbsp;</label>
+									</div>
+									<div class="col-md-4">
+										<div class="col-md-6">
+										</div>
+										<div class="col-md-6">
+			@foreach($categories as $category)
+			<div class="row">
+				<div class="card">
+					<div class="card-header">
+						<a href="{{ route('categories', ['id' => $category->id, 'name' => $category->name ]) }}">{{ $category->name }}</a>
+					</div>
+					<div class="card-body">
+					</div>
+				</div>
+			</div>
+			@endforeach
+									</div>
 									</div>  
 						</div>
 				
@@ -60,7 +77,7 @@
 						<h3>More<span class="color"> Products</span></h3>
 
 									@foreach( $products as $offer)
-									<div class="row col-md-6">
+									<div class="row col-md-4">
 									<h3> {{ $offer->name }} </h3><br />
 									@php
 									 $image = $offer->images()->where('product_id', $offer->id)->first();
@@ -75,6 +92,9 @@
 										<label class="alert alert-success">Buy {{ $offer->currency }} {{ $offer->price }} &nbsp;</label>
 									</div>  
 									@endforeach
+									<div class="">
+										{{ $products->render() }}
+									</div>
 	</div>
 </div>
  

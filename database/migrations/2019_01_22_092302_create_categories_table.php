@@ -42,8 +42,14 @@ class CreateCategoriesTable extends Migration
             'name' => 'Consultancy'
         ],
         [
-            'name' => 'Faka Dumpe'
+            'name' => 'Database Management'
         ],
+        [
+            'name' => 'Clothes'
+        ],
+        [
+            'name' => 'Household Fittings'
+        ]
     ]);
     }
 

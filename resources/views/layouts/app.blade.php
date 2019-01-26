@@ -32,33 +32,6 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <div id="wrapper" class="home-page"> 
-	<header class="topbar">
-		<div class="container">
-			<div class="row">
-				<!-- social icon-->
-				<div class="col-sm-3">
-				   <ul class="social-network">
-					<li><a class="waves-effect waves-dark" href="https://facebook.com/"><i class="fa fa-facebook"></i></a></li>
-					<!--//<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>//-->
-					<li><a class="waves-effect waves-dark" href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
-					<!--//<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-pinterest"></i></a></li>
-					<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-google-plus"></i></a></li>//-->
-				</ul>
-				</div>
-				<div class="col-sm-9">
-					<div class="row">
-						<ul class="info"> 
-							<li><i class="icon-info-blocks material-icons">question_answer</i><span>vicfirmfinance@gmail.com</span></li>
-							<li><i class="icon-info-blocks material-icons">perm_phone_msg</i><span>+260953020005 or +260977714224</span></li>
-						</ul>
-						<div class="clr"></div>
-					</div>
-				</div>
-				<!-- info -->
-
-			</div>
-		</div>
-	</header>
 		
 	<!-- start header -->
 	<header>
@@ -70,7 +43,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ route('home')}}"><img class="logo" src="{{ asset('img/logo.png') }}" />VicFirm</i></a>
+                    <a class="navbar-brand" href="{{ route('home')}}">Matre Logistics</i></a>
                 </div>
                 <!--// Active Page //-->
                 @php
@@ -83,12 +56,14 @@
                 @endphp
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
+                    	 <!--
                         <li class="{{$ah}}"><a class="waves-effect waves-dark" href="{{route('home')}}">Home</a></li> 
                         <li class="{{$ac}}"><a class="waves-effect waves-dark" href="{{route('company')}}">Company</a></li>
 						<li class="{{$as}}"><a class="waves-effect waves-dark" href="{{route('services')}}">Services</a></li>
                        <li class="{{$ag}}"><a class="waves-effect waves-dark" href="{{route('products')}}">Products</a></li>
                         <li class="{{$ab}}"><a class="waves-effect waves-dark" href="{{ route('blog_list') }}">News</a></li>
                         <li class="{{$aco}}"><a class="waves-effect waves-dark" href="{{route('contact')}}">Contact</a></li>
+                         -->
                     </ul>
                 </div>
             </div>
@@ -103,16 +78,16 @@
               <li>
                 <img src="{{ asset('img/slides/3.jpg') }}" alt="" />
                 <div class="flex-caption">
-                    <h3>Business  Accumen</h3> 
-					<p>We are business savvy</p> 
+                    <h3>One Store, Global Reach</h3> 
+					<p>We are everywhere</p> 
 					 
                 </div>
               </li>
               <li>
                 <img src="{{ asset('img/slides/2.jpg') }}" alt="" />
                 <div class="flex-caption">
-                    <h3>Business Growth</h3> 
-					<p>Professional and Dependable</p> 
+                    <h3>Distance is illusive</h3> 
+					<p>Bluring the notion of distance</p> 
 					 
                 </div>
               </li>
@@ -130,14 +105,14 @@
 				<div class="widget">
 					<h5 class="widgetheading">Our Contact</h5>
 					<address>
-					<strong>VicFirm Financial Consultancy LTD</strong><br>
+					<strong>Matre Logistics LTD</strong><br>
 					18 Bulevard Los Angeles Road Lusaka <br />
 					And<br />
 					Plot 312A Libala Lusaka.</address>
 					<p>
 						<i class="fa fa-phone"></i> +260977714224 <br>
 						<i class="fa fa-phone"></i> +260953020005 <br>
-						<i class="fa fa-envelope"></i> VicFirmfinance@gmail.com
+						<i class="fa fa-envelope"></i> matrelogistics@gmail.com
 					</p>
 				</div>
 			</div>
@@ -161,7 +136,7 @@
 				<div class="col-lg-6">
 					<div class="copyright">
 						<p>
-							<span>&copy; VicFirm Financial Consultancy LTD
+							<span>&copy; Matre Logistics LTD
 						</p>
 					</div>
 				</div>
