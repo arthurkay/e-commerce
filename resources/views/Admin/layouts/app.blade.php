@@ -105,8 +105,10 @@
                         </li> -->
                         <li><a href=""><i class="fa fa-user" aria-hidden="true"></i> Users</a>
                         </li>
+                        <!--
                          <li><a href="{{ route('profile')}}"><i class="fa fa-book" aria-hidden="true"></i>Company Profile</a>
                             </li>  
+                        -->
                           <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-briefcase" aria-hidden="true"></i> Products</a>
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
