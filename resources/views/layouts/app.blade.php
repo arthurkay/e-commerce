@@ -106,12 +106,11 @@
 					<h5 class="widgetheading">Our Contact</h5>
 					<address>
 					<strong>Matre Logistics LTD</strong><br>
-					18 Bulevard Los Angeles Road Lusaka <br />
-					And<br />
-					Plot 312A Libala Lusaka.</address>
+					Carosel complex, <br /> 2<sup>nd</sup> Floor<br />
+					P/bag15 Rw Lusaka.</address>
 					<p>
-						<i class="fa fa-phone"></i> +260977714224 <br>
-						<i class="fa fa-phone"></i> +260953020005 <br>
+						<i class="fa fa-phone"></i> +260977548124 <br>
+						<i class="fa fa-phone"></i> +260953016121 <br>
 						<i class="fa fa-envelope"></i> matrelogistics@gmail.com
 					</p>
 				</div>
