@@ -51,11 +51,21 @@
   											@endfor 
 										</div>
 										<p> {{ $product->description }}</p><br />
-										<form action="{{ route('checkout', ['id' => $product->id, 'product' => $product->name]) }}" method="get">
+										<form action="{{ route('cart', ['id' => $product->id, 'product' => $product->name]) }}" method="get">
 										<button class="btn btn-default" type="submit">
-										<label class="alert alert-success">Buy {{ $product->currency }} {{ $product->price }} &nbsp;</label>
+										<label class="alert alert-success">Add to cart {{ $product->currency }} {{ $product->price }} &nbsp;</label>
 										</button>
 										</form>
+										@if (session('success'))
+										<div class="alert alert-success">
+											{{ session('success') }}
+										</div>
+										@endif
+										@if (session('error'))
+										<div class="alert alert-danger">
+											{{ session('error') }}
+										</div>
+										@endif
 									</div>
 									<div class="col-md-4">
 										<div class="col-md-6">
@@ -103,6 +113,9 @@
 </div>
  
 	</section>
+@endsection
+
+@section('script')
 	<script>
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -130,5 +143,10 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
 }
+
+//SCript to make flash data to disappear after some time
+$(() => {
+	('.alert').fadeOut(8000)
+});
 </script>
 @endsection

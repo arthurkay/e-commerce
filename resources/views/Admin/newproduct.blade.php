@@ -69,7 +69,7 @@
                                 </div>
                                   <div class="row">
                                     <div class="input-field col s12">
-                                        <select id="currency" class="validate" name="currency" required >
+                                        <select id="currency" class="validate" name="currency" required disabled>
                                             <option value="$">Dollar</option>
                                             <option value="K">Zambian Kwacha</option>
                                         </select>

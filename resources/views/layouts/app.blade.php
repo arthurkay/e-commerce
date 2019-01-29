@@ -7,6 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="Arthur Kalikiti" />
+<!-- FONT-AWESOME ICON CSS -->
+<link rel="stylesheet" href="{{asset('/Admin/css/font-awesome.min.css')}}">
 <!-- css --> 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('materialize/css/materialize.min.css') }}" media="screen,projection" />
@@ -61,10 +63,11 @@
                         @endif
                         @if( Auth::Check() )
                          <li class="{{$ah}}">
-                         	<a class="waves-effect waves-dark" href="#">{{ Auth::user()->name }}</a>
+                         	<a class="waves-effect waves-dark" href="{{ route('user') }}">{{ Auth::user()->name }}</a>
+                         	</li> 
+                         	<li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#myModal">Cart</a></li>
                          	<li><a class="waves-effect waves-dark" href="">Orders</a></li>
                          	<li><a class="waves-effect waves-dark" href="">Logout</a></li>
-                         </li> 
                         @endif
                     </ul>
                 </div>
@@ -97,7 +100,63 @@
         </div>
 	<!-- end slider --> 
 	</section>  
-	 
+@php
+use App\Cart;
+use App\Product;
+$carts = Cart::where('user_id', Auth::user()->id)->get();
+@endphp
+<section>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Shopping Cart</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+        	<tr>
+        		<th>Product Name</th><th>Price</th><th>Remove</th>
+        	</tr>
+        	@php
+        	$prices = [];
+        	@endphp
+        	@foreach( $carts as $cart )
+        	@php
+        	$product = Product::find($cart->product_id);
+        	array_push($prices, $product->price);
+        	@endphp
+        	<tr>
+        		<td>{{ $product->name }}</td> 
+        		<td>({{ $product->currency }} 
+        		{{ $product->price }})</td> 
+        		<td><a href="{{ route('removeCart', ['id' => $cart->id]) }}"><i class="fa fa-trash"></i></a></td>
+        	</tr>
+        	@endforeach
+        	<td>Total: </td><td></td><td><span class="color">{{ array_sum($prices) }}</span></td>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Checkout</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+										@if (session('ok'))
+										<div class="alert alert-success">
+											{{ session('success') }}
+										</div>
+										@endif
+										@if (session('fail'))
+										<div class="alert alert-danger">
+											{{ session('error') }}
+										</div>
+										@endif
+</section>	 
      @yield('content')
  
 	<footer>
@@ -158,6 +217,7 @@
 <a href="#" class="scrollup waves-effect waves-dark"><i class="fa fa-angle-up active"></i></a>
 <!-- javascript
     ================================================== -->
+    @yield('script')
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>

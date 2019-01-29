@@ -8,6 +8,7 @@ use App\Product;
 use App\Category;
 use Auth;
 use App\Country;
+use App\Cart;
 
 class MainController extends Controller
 {
@@ -99,10 +100,34 @@ class MainController extends Controller
     }
 
      public function checkout($id, $product) {
-        $title = "Matre Logistics | checkout with ".$product;
+        $title = "Matre Logistics | checkout";
         $countries = Country::get();
         $product = Product::find($id);
         return view('checkout', compact(['title', 'product', 'countries']));
+    }
+
+     public function cart($id, $product) {
+       $cart = new Cart();
+       $cart->user_id = Auth::user()->id;
+       $cart->product_id = $id;
+
+       if ($cart->save()) {
+       return redirect()->back()->with('success', $product.' successfully added to cart');
+   }
+   else {
+    return redirect()->back()->with('error', 'Sorry, we are unable to add '.$product.' to your cart');
+   }
+    }
+
+    public function removeCart($id) {
+        $cart = Cart::find($id);
+
+        if ($cart->delete()) {
+            return redirect()->back()->with('ok', 'Item removed from shopping cart');
+        }
+        else {
+            return redirect()->back()->with('fail', 'Sorry, could not remove item from cart');
+        }
     }
 
 }
