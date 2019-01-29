@@ -19,6 +19,8 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
         });
 
+        DB::table('categories')->truncate();
+
         DB::table('categories')->insert([
         [
             'name' => 'Software'

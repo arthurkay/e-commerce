@@ -56,14 +56,16 @@
                 @endphp
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
-                    	 <!--
-                        <li class="{{$ah}}"><a class="waves-effect waves-dark" href="{{route('home')}}">Home</a></li> 
-                        <li class="{{$ac}}"><a class="waves-effect waves-dark" href="{{route('company')}}">Company</a></li>
-						<li class="{{$as}}"><a class="waves-effect waves-dark" href="{{route('services')}}">Services</a></li>
-                       <li class="{{$ag}}"><a class="waves-effect waves-dark" href="{{route('products')}}">Products</a></li>
-                        <li class="{{$ab}}"><a class="waves-effect waves-dark" href="{{ route('blog_list') }}">News</a></li>
-                        <li class="{{$aco}}"><a class="waves-effect waves-dark" href="{{route('contact')}}">Contact</a></li>
-                         -->
+                    	@if ( Auth::guest() )
+                        <li class="{{$ah}}"><a class="waves-effect waves-dark" href="{{route('login')}}">Login</a></li> 
+                        @endif
+                        @if( Auth::Check() )
+                         <li class="{{$ah}}">
+                         	<a class="waves-effect waves-dark" href="#">{{ Auth::user()->name }}</a>
+                         	<li><a class="waves-effect waves-dark" href="">Orders</a></li>
+                         	<li><a class="waves-effect waves-dark" href="">Logout</a></li>
+                         </li> 
+                        @endif
                     </ul>
                 </div>
             </div>

@@ -28,7 +28,7 @@ Route::get('/products/{id}/{title}', 'MainController@productDetails')->name('pro
 //Product category
 
 Route::group(['prefix' => 'product'], function() {
-	Route::get('{id}/{name}', 'MainController@categories')->name('categories');
+	Route::get('{id}/{name}', 'MainController@categories')->name('categories');	
 });
 
 //Admin Panel
@@ -62,4 +62,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth']], function ()
 
 Auth::routes(['verify' => true, 'register' => false]);
 
-Route::get('/home', 'MainController@index');
+Route::group(['middleware' => 'auth'], function() {
+	Route::get('/home', 'MainController@user')->name('user');
+	Route::get('{id}/{product}', 'MainController@checkout')->name('checkout');
+});

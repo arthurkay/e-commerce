@@ -51,7 +51,11 @@
   											@endfor 
 										</div>
 										<p> {{ $product->description }}</p><br />
+										<form action="{{ route('checkout', ['id' => $product->id, 'product' => $product->name]) }}" method="get">
+										<button class="btn btn-default" type="submit">
 										<label class="alert alert-success">Buy {{ $product->currency }} {{ $product->price }} &nbsp;</label>
+										</button>
+										</form>
 									</div>
 									<div class="col-md-4">
 										<div class="col-md-6">

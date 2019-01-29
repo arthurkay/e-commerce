@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Blog;
 use App\Product;
 use App\Category;
+use Auth;
+use App\Country;
 
 class MainController extends Controller
 {
@@ -87,6 +89,20 @@ class MainController extends Controller
         $category = $catGroup->name;
         $products = Product::where('category', $id)->paginate(12);
         return view('categories', compact(['title', 'categories', 'category', 'products']));
+    }
+
+    public function user() {
+        $title = "Matre Logistics | ".Auth::user()->name;
+        $categories = Category::get();
+        $countries = Country::get();
+        return view('user', compact(['title', 'categories', 'countries']));
+    }
+
+     public function checkout($id, $product) {
+        $title = "Matre Logistics | checkout with ".$product;
+        $countries = Country::get();
+        $product = Product::find($id);
+        return view('checkout', compact(['title', 'product', 'countries']));
     }
 
 }
