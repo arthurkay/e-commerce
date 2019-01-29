@@ -99,11 +99,13 @@
             </ul>
         </div>
 	<!-- end slider --> 
-	</section>  
+	</section>
 @php
 use App\Cart;
 use App\Product;
+if (Auth::user())  {
 $carts = Cart::where('user_id', Auth::user()->id)->get();
+}
 @endphp
 <section>
 <!-- Modal -->
@@ -121,6 +123,7 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
         	<tr>
         		<th>Product Name</th><th>Price</th><th>Remove</th>
         	</tr>
+        	@if (isset($carts))
         	@php
         	$prices = [];
         	@endphp
@@ -137,6 +140,7 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
         	</tr>
         	@endforeach
         	<td>Total: </td><td></td><td><span class="color">{{ array_sum($prices) }}</span></td>
+        	@endif
         </table>
       </div>
       <div class="modal-footer">
