@@ -62,9 +62,21 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth']], function ()
 
 Auth::routes(['verify' => true, 'register' => false]);
 
+
+//Checkout routes
+
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/home', 'MainController@user')->name('user');
-	Route::get('{id}/{product}', 'MainController@checkout')->name('checkout');
+	Route::get('checkout', 'MainController@checkout')->name('checkout');
 	Route::get('/cart/{id}/{product}', 'MainController@cart')->name('cart');
 	Route::get('{id}', 'MainController@removeCart')->name('removeCart');
+});
+
+//Order routes
+
+Route::group(['middleware' => 'auth', 'prefix' => 'orders'], function() {
+	Route::get('/', 'OrdersController@index')->name('orders');
+	Route::get('/{id}', 'OrdersController@view')->name('view');
+	Route::post('/', 'OrdersController@store')->name('store');
+	Route::post('delete', 'OrdersController@delete')->name('delete');
 });

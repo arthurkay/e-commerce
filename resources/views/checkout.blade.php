@@ -3,7 +3,7 @@
 	
 	<section class="section-padding gray-bg">
 		<div class="container">
-			<div class="col-md-10">
+			<div class="col-md-12">
 				<h3><span class="color">{{ Auth::user()->name }}</span>'s Order</h3>
 				<div class="col-md-8">
 					<h3><span class="color">Your Details</span></h3>
@@ -31,17 +31,38 @@
 					 			@endforeach
 					 		</select>
 					 	</div>
-					 	<div class="form-group">
-					 		<input type="buttom" class="btn btn-default" value="SUBMIT" />
-					 	</div>
+					 	
 				</div>
 				<div class="col-md-4">
 					<h3><span class="color">Purchase Details</span></h3>
-					
+					  <table class="table">
+        	<tr>
+        		<th>Product Name</th><th>Price</th><th>Remove</th>
+        	</tr>
+        	
+        	@php
+        	use App\Product;
+        	$prices = [];
+        	@endphp
+        	@foreach( $carts as $cart )
+        	@php
+        	$product = Product::find($cart->product_id);
+        	array_push($prices, $product->price);
+        	@endphp
+        	<tr>
+        		<td>{{ $product->name }}</td> 
+        		<td>{{ $product->currency }} 
+        		{{ $product->price }}</td> 
+        		<td><a href="{{ route('removeCart', ['id' => $cart->id]) }}"><i class="fa fa-trash"></i></a></td>
+        	</tr>
+        	@endforeach
+        	<td>Total: </td><td></td><td><span class="color">{{ array_sum($prices) }}</span></td>
+        	
+        </table>
 				</div>
-			</div>
-			<div class="col-md-2">
-				
+						<div class="form-group">
+					 		<input type="buttom" class="btn btn-default" value="Proceed" />
+					 	</div>
 			</div>
 		</div>
 	</section>	  

@@ -144,12 +144,16 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Checkout</button>
+      	<form action="{{ route('checkout') }}" method="get">
+        <button type="submit" class="btn btn-default">Checkout</button>
+    	</form>
       </div>
     </div>
 
   </div>
 </div>
+										
+</section>
 										@if (session('ok'))
 										<div class="alert alert-success">
 											{{ session('success') }}
@@ -159,8 +163,7 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
 										<div class="alert alert-danger">
 											{{ session('error') }}
 										</div>
-										@endif
-</section>	 
+										@endif	 
      @yield('content')
  
 	<footer>

@@ -99,11 +99,11 @@ class MainController extends Controller
         return view('user', compact(['title', 'categories', 'countries']));
     }
 
-     public function checkout($id, $product) {
+     public function checkout() {
         $title = "Matre Logistics | checkout";
         $countries = Country::get();
-        $product = Product::find($id);
-        return view('checkout', compact(['title', 'product', 'countries']));
+        $carts = Cart::where('user_id', Auth::user()->id)->get();
+        return view('checkout', compact(['title', 'carts', 'countries']));
     }
 
      public function cart($id, $product) {
