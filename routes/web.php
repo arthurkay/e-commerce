@@ -62,7 +62,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth']], function ()
 
 Auth::routes(['verify' => true, 'register' => false]);
 
-Route::group(['middleware' => 'auth', 'prefix' => 'checkout'], function() {
+Route::group(['middleware' => 'auth'], function() {
 	Route::get('/home', 'MainController@user')->name('user');
 	Route::get('{id}/{product}', 'MainController@checkout')->name('checkout');
 	Route::get('/cart/{id}/{product}', 'MainController@cart')->name('cart');
