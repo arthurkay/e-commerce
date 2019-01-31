@@ -60,7 +60,7 @@
                                 </div>
                                   <div class="row">
                                     <div class="input-field col s12">
-                                        <select id="currency" class="validate" name="currency" required disabled>
+                                        <select id="currency" class="validate" name="currency" required>
                                             <option 
                                             @if ($product->currency == "$")
                                             {{ _('selected') }}
