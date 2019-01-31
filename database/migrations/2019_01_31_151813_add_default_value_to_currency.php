@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCategoryToProductsTable extends Migration
+class AddDefaultValueToCurrency extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddCategoryToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('category');
+            $table->string('currency')->default('$')->change();
         });
     }
 
@@ -26,7 +26,7 @@ class AddCategoryToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('category');
+            $table->string('currency')->change();
         });
     }
 }

@@ -33,7 +33,7 @@ Route::group(['prefix' => 'product'], function() {
 
 //Admin Panel
 
-Route::group(['prefix' => 'admin',  'middleware' => ['auth']], function ()
+Route::group(['prefix' => 'admin',  'middleware' => ['auth', 'checkAdmin']], function ()
 {
 	Route::get('/blog', 'Admin\MainController@blog')->name('blog');
 	Route::get('/', 'Admin\MainController@index')->name('AdminHome');
@@ -58,9 +58,10 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth']], function ()
 	Route::post('save-changes', 'Admin\MainController@saveProduct')->name('saveProduct');
 	Route::post('save-product-images', 'Admin\MainController@saveProductImages')->name('saveProductImages');
 	Route::get('delete-image/{id?}', 'Admin\MainController@deleteImage')->name('deleteImage');
+	Route::get('/logout', 'Admin\MainController@logout')->name('logout');
 });
 
-Auth::routes(['verify' => true, 'register' => false]);
+Auth::routes();
 
 
 //Checkout routes

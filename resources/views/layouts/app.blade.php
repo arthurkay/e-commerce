@@ -67,7 +67,7 @@
                          	</li> 
                          	<li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#myModal">Cart</a></li>
                          	<li><a class="waves-effect waves-dark" href="">Orders</a></li>
-                         	<li><a class="waves-effect waves-dark" href="">Logout</a></li>
+                         	<li><a class="waves-effect waves-dark" onclick="logout()">Logout</a></li>
                         @endif
                     </ul>
                 </div>
@@ -165,7 +165,16 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
 										</div>
 										@endif	 
      @yield('content')
- 
+
+	 <!-- Logout form -->>
+	 <form action="{{ route('logout') }}" method="post" id="logout_form">
+		{{ csrf_field() }}
+	 </form>
+	<script>
+		function logout() {
+			$("#logout_form").submit();
+		}
+	</script>
 	<footer>
 	<div class="container">
 		<div class="row">
