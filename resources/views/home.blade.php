@@ -22,7 +22,7 @@
 									@endphp
 									<a href="{{ route('productDetails', ['id' => $product->id, 'title' => $product->name]) }}">
 										@if ($image)
-										<img src="{{ asset('storage/'.$image->image) }}" width="100%" />
+										<img src="{{ asset('storage/'.$image->image) }}" width="100%" height="100%" />
 										@endif
 									</a>
 									<br />

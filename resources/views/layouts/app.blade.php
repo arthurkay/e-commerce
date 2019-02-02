@@ -47,6 +47,13 @@
                     </button>
                     <a class="navbar-brand" href="{{ route('home')}}">Matre Logistics</i></a>
                 </div>
+@php
+use App\Cart;
+use App\Product;
+if (Auth::user())  {
+$carts = Cart::where('user_id', Auth::user()->id)->get();
+}
+@endphp
                 <!--// Active Page //-->
                 @php
                 (url()->current() == route('home')) ? $ah = 'active' : $ah = '';
@@ -65,7 +72,7 @@
                          <li class="{{$ah}}">
                          	<a class="waves-effect waves-dark" href="{{ route('user') }}">{{ Auth::user()->name }}</a>
                          	</li> 
-                         	<li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#myModal">Cart</a></li>
+                         	<li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#myModal">Cart <i class="fa fa-shopping-cart">{{ count($carts) }}</i></a></li>
                          	<li><a class="waves-effect waves-dark" href="">Orders</a></li>
                          	<li><a class="waves-effect waves-dark" onclick="logout()">Logout</a></li>
                         @endif
@@ -100,13 +107,7 @@
         </div>
 	<!-- end slider --> 
 	</section>
-@php
-use App\Cart;
-use App\Product;
-if (Auth::user())  {
-$carts = Cart::where('user_id', Auth::user()->id)->get();
-}
-@endphp
+
 <section>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">

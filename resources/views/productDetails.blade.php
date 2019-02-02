@@ -5,6 +5,16 @@
 	<div class="container">
 		<div class="row"> 
 							<div class="col-md-12">
+										@if (session('success'))
+										<div class="alert alert-success">
+											{{ session('success') }}
+										</div>
+										@endif
+										@if (session('error'))
+										<div class="alert alert-danger">
+											{{ session('error') }}
+										</div>
+										@endif
 								<div class="about-logo">
 									<h3>|<span class="color"> {{ $product->name }} </span></h3>
 								</div>
@@ -56,16 +66,6 @@
 										<label class="alert alert-success">Add to cart {{ $product->currency }} {{ $product->price }} &nbsp;</label>
 										</button>
 										</form>
-										@if (session('success'))
-										<div class="alert alert-success">
-											{{ session('success') }}
-										</div>
-										@endif
-										@if (session('error'))
-										<div class="alert alert-danger">
-											{{ session('error') }}
-										</div>
-										@endif
 									</div>
 									<div class="col-md-4">
 										<div class="col-md-6">
