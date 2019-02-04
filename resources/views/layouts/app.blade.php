@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="{{asset('/Admin/css/font-awesome.min.css')}}">
 <!-- css --> 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="{{ asset('materialize/css/materialize.min.css') }}" media="screen,projection" />
+<!--<link rel="stylesheet" href="{{ asset('materialize/css/materialize.min.css') }}" media="screen,projection" />//-->
 <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('css/fancybox/jquery.fancybox.css') }}" rel="stylesheet"> 
 <link href="{{ asset('css/flexslider.css') }}" rel="stylesheet" /> 
@@ -73,7 +73,7 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
                          	<a class="waves-effect waves-dark" href="{{ route('user') }}">{{ Auth::user()->name }}</a>
                          	</li> 
                          	<li><a class="waves-effect waves-dark" href="" data-toggle="modal" data-target="#myModal">Cart <i class="fa fa-shopping-cart">{{ count($carts) }}</i></a></li>
-                         	<li><a class="waves-effect waves-dark" href="">Orders</a></li>
+                         	<li><a class="waves-effect waves-dark" href="{{ route('purchase-orders') }}">Orders</a></li>
                          	<li><a class="waves-effect waves-dark" onclick="logout()">Logout</a></li>
                         @endif
                     </ul>
@@ -140,7 +140,9 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
         		<td><a href="{{ route('removeCart', ['id' => $cart->id]) }}"><i class="fa fa-trash"></i></a></td>
         	</tr>
         	@endforeach
+          <tr>
         	<td>Total: </td><td></td><td><span class="color">{{ array_sum($prices) }}</span></td>
+          </tr>
         	@endif
         </table>
       </div>
@@ -167,7 +169,7 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
 										@endif	 
      @yield('content')
 
-	 <!-- Logout form -->>
+	 <!-- Logout form -->
 	 <form action="{{ route('logout') }}" method="post" id="logout_form">
 		{{ csrf_field() }}
 	 </form>
@@ -213,7 +215,7 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
 				<div class="col-lg-6">
 					<div class="copyright">
 						<p>
-							<span>&copy; Matre Logistics LTD
+							<span>&copy; Matre Logistics LTD</span>
 						</p>
 					</div>
 				</div>

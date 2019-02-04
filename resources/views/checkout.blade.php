@@ -5,8 +5,20 @@
 		<div class="container">
 			<div class="col-md-12">
 				<h3><span class="color">{{ Auth::user()->name }}</span>'s Order</h3>
+				@if (session('success'))
+				<div class="alert alert-success">
+					{{ session('success') }}
+				</div>
+				@endif
+				@if ( session('error') )
+				<div class="alert alert-danger">
+					{{ session('error') }}
+				</div>
+				@endif
 				<div class="col-md-8">
 					<h3><span class="color">Your Details</span></h3>
+					<form action="{{ route('proceed') }}" method="POST">
+						@csrf
 					 	<div class="form-group">
 					 		<label for="name">Name: </label>
 					 		<input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}"/>
@@ -17,17 +29,19 @@
 					 	</div>
 					 	<div class="form-group">
 					 		<label for="address">Address: </label>
-					 		<textarea class="form-control" name="address"></textarea>
+					 		<textarea class="form-control" name="address">{{ Auth::User()->address }}</textarea>
 					 	</div>
 					 	<div class="form-group">
 					 		<label for="zipcode">ZipCode: </label>
-					 		<text type="text" class="form-control" name="zipcode">
+					 		<input type="text" class="form-control" name="zipCode" value="{{ Auth::User()->zipCode }}"/>
 					 	</div>
 					 	<div class="form-group">
 					 		<label for="country">Country: </label>
 					 		<select class="form-control" name="country">
 					 			@foreach($countries as $country)
-					 			<option value="{{ $country->code }}">{{ $country->name }}</option>
+					 			<option 
+					 			<?php echo (Auth::user()->country == $country->code) ? 'selected' : ''; ?>
+					 			value="{{ $country->code }}">{{ $country->name }}</option>
 					 			@endforeach
 					 		</select>
 					 	</div>
@@ -50,20 +64,38 @@
         	array_push($prices, $product->price);
         	@endphp
         	<tr>
-        		<td>{{ $product->name }}</td> 
+        		<td>{{ $product->name }}</td>
+        		<input type="hidden" name="products[]" value="{{ $product->id }}" />
+        		<input type="hidden" name="currency[]" value="{{ $product->currency }}" />
+        		<input type="hidden" name="amount[]" value="{{ $product->price }}" />
         		<td>{{ $product->currency }} 
         		{{ $product->price }}</td> 
         		<td><a href="{{ route('removeCart', ['id' => $cart->id]) }}"><i class="fa fa-trash"></i></a></td>
         	</tr>
         	@endforeach
+        	<tr>
         	<td>Total: </td><td></td><td><span class="color">{{ array_sum($prices) }}</span></td>
-        	
+        	</tr>
         </table>
 				</div>
 						<div class="form-group">
-					 		<input type="buttom" class="btn btn-default" value="Proceed" />
+					 			@if (count($errors) > 0)
+					 			@foreach($errors->all() as $error)
+					 			<div class="alert alert-danger form-control">
+					 				{{ $error }}
+					 			</div>
+					 			@endforeach
+					 			@endif
 					 	</div>
-			</div>
-		</div>
+					 	@php
+					 	$totalCost = array_sum($prices)
+					 	@endphp
+					 	@if ($totalCost > 0)
+						<div class="form-group">
+					 		<input type="submit" class="btn btn-default" value="Proceed" />
+					 	</div>
+					 	@endif
+					 </form>
+					</div>
 	</section>	  
 	@endsection

@@ -24,7 +24,7 @@
 										<p> {{ $product->description }}</p>
 									</a>
 									<br />
-										<label class="alert alert-success">Add to cart {{ $product->currency }} {{ $product->price }} &nbsp;</label>
+										<label class="alert alert-success">{{ $product->currency }} {{ $product->price }} &nbsp;</label>
 									</div>  
 									@endforeach
 									<div class="">

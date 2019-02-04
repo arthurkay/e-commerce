@@ -12,7 +12,7 @@
 					</div>
 					<div class="card-body">
 						@php
-						$products = App\Product::where('category', $category->id)->limit(6)->get();
+						$products = App\Product::where('category', $category->id)->orderBy('id', 'desc')->limit(6)->get();
 						@endphp
 						@foreach($products as $product)
 						<div class="col-md-2">
@@ -22,11 +22,11 @@
 									@endphp
 									<a href="{{ route('productDetails', ['id' => $product->id, 'title' => $product->name]) }}">
 										@if ($image)
-										<img src="{{ asset('storage/'.$image->image) }}" width="100%" height="100%" />
+										<div class="img" style="background-image:url('{{ asset('storage/'.$image->image) }}');"></div>
 										@endif
 									</a>
 									<br />
-										<label class="alert alert-success">Buy {{ $product->currency }} {{ $product->price }} &nbsp;</label>
+										<label class="alert">{{ $product->currency }} {{ $product->price }} &nbsp;</label>
 						</div>
 						@endforeach
 					</div>

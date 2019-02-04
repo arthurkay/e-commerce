@@ -98,18 +98,19 @@
 									@endphp
 									<a href="{{ route('productDetails', ['id' => $offer->id, 'title' => $offer->name]) }}">
 										@if ($image)
-										<img src="{{ asset('storage/'.$image->image) }}" width="100%" />
+										
+										<div class="img" style="background-image:url('{{ asset('storage/'.$image->image) }}');"></div>
 										@endif
 										<p> {{ $offer->description }}</p>
 									</a>
 									<br />
-										<label class="alert alert-success">Buy {{ $offer->currency }} {{ $offer->price }} &nbsp;</label>
+										<label class="alert alert-success">{{ $offer->currency }} {{ $offer->price }} &nbsp;</label>
 									</div>  
 									@endforeach
-									<div class="">
+	</div>
+									<div class="row">
 										{{ $products->render() }}
 									</div>
-	</div>
 </div>
  
 	</section>

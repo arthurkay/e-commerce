@@ -70,14 +70,10 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/home', 'MainController@user')->name('user');
 	Route::get('checkout', 'MainController@checkout')->name('checkout');
 	Route::get('/cart/{id}/{product}', 'MainController@cart')->name('cart');
-	Route::get('{id}', 'MainController@removeCart')->name('removeCart');
+	Route::get('delete/from/cart/{id}', 'MainController@removeCart')->name('removeCart');
+	Route::post('updateUser', 'MainController@updateUser')->name('updateUser');
+	Route::post('proceed', 'OrdersController@proceed')->name('proceed');
+	Route::get('/purchase-orders', 'OrdersController@orders')->name('purchase-orders');
+	Route::post('change-password', 'MainController@ChangePassword')->name('changePassword');
 });
 
-//Order routes
-
-Route::group(['middleware' => 'auth', 'prefix' => 'orders'], function() {
-	Route::get('/', 'OrdersController@index')->name('orders');
-	Route::get('/{id}', 'OrdersController@view')->name('view');
-	Route::post('/', 'OrdersController@store')->name('store');
-	Route::post('delete', 'OrdersController@delete')->name('delete');
-});

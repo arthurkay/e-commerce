@@ -9,6 +9,11 @@ use App\Category;
 use Auth;
 use App\Country;
 use App\Cart;
+use App\User;
+use App\Http\Requests\UsersDetails;
+use App\Order;
+use App\PurchaseOrder;
+use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
 {
@@ -79,7 +84,7 @@ class MainController extends Controller
         $categories = Category::get();
         $title = "Matre Logistics LTD | ".$product->name;
 
-        $products = Product::orderBy('id', 'desc')->paginate(10);
+        $products = Product::orderBy('id', 'desc')->paginate(9);
         return view('productDetails', compact(['title', 'products', 'product', 'categories']));
     }
 
@@ -88,7 +93,7 @@ class MainController extends Controller
         $categories = Category::get();
         $catGroup = Category::find($id);
         $category = $catGroup->name;
-        $products = Product::where('category', $id)->paginate(12);
+        $products = Product::where('category', $id)->orderBy('id', 'desc')->paginate(12);
         return view('categories', compact(['title', 'categories', 'category', 'products']));
     }
 
@@ -128,6 +133,49 @@ class MainController extends Controller
         else {
             return redirect()->back()->with('fail', 'Sorry, could not remove item from cart');
         }
+    }
+
+    public function updateUser(UsersDetails $request) {
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->zipCode = $request->zipCode;
+        $user->country = $request->country;
+
+        if ($user->save()) {
+            return redirect()->back()->with('success', 'Users details changed successfully');
+        }
+        else {
+            return redirect()->back()->with('error', 'Sorry, unable to change user details');
+        }
+
+    }
+
+    public function ChangePassword(Request $request){
+ 
+        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error","Your current password does not match with the password in the database. Please try again.");
+        }
+ 
+        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+            //Current password and new password are same
+            return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
+        }
+ 
+        $validatedData = $request->validate([
+            'current-password' => 'required',
+            'new-password' => 'required|string|min:8|confirmed',
+        ]);
+ 
+        //Change Password
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('new-password'));
+        $user->save();
+ 
+        return redirect()->back()->with("success","Password changed successfully !");
+ 
     }
 
 }
