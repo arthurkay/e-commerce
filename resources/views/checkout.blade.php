@@ -92,10 +92,24 @@
 					 	@endphp
 					 	@if ($totalCost > 0)
 						<div class="form-group">
-					 		<input type="submit" class="btn btn-default" value="Proceed" />
+					 		<input type="submit" class="btn btn-default" value="Pay" />
 					 	</div>
 					 	@endif
 					 </form>
+					 @if (session('amount'))
+					 	<form action="{{ session('url') }}" method="POST">
+					 		<input type="hidden" name="amount" value="{{ session('amount') }}" />
+					 		<input type="hidden" name="currency" value="{{ session('currency') }}" />
+					 		<input type="hidden" name="signature" value="{{ session('signature') }}" />
+					 		<input type="hidden" name="transaction_reference" value="{{ session('transaction_reference') }}" />
+					 		<input type="hidden" name="channel_id" value="{{ session('channel_id') }}" />
+					 		<input type="hidden" name="test" value="{{ session('test') }}" />
+					 		<div class="form-group">
+					 		<input type="submit" class="btn btn-default" value="Proceed" />
+					 		</div>
+					 	</form>
+					 @endif
+					</div>
 					</div>
 	</section>	  
 	@endsection

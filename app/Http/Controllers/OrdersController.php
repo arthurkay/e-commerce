@@ -8,6 +8,7 @@ use App\Product;
 use App\PurchaseOrder;
 use App\Order;
 use Auth;
+use Carbon\Carbon;
 
 
 class OrdersController extends Controller
@@ -38,7 +39,33 @@ class OrdersController extends Controller
     }
 
         	Cart::where('user_id', Auth::user()->id)->delete();
-            return redirect()->back()->with('success', 'Way to go');
+            //return redirect()->back()->with('success', 'Way to go');
+            //$request->setMethod('POST');
+            //$this->OnePay($request);
+
+        $prices = [];
+        foreach($request->amount as $price ) {
+            array_push($prices, $price);
+            
+        }
+
+        $test = 0;
+        $channel_id = 1001;
+        $currency = 'USD';
+        $amount = array_sum($prices) * 100;
+        $transaction_reference = str_random(12).'-'.Carbon::now();
+        $secret = 'P-1I7]62}NJsdC';
+        $signature = $channel_id.$currency.$amount.$transaction_reference.$secret;
+        $url = 'https://checkout.onepay.co.zm/v1';
+
+         return redirect()->back()->with('url', $url)
+         ->with('test', $test)
+         ->with('currency', $currency)
+         ->with('amount', $amount)
+         ->with('transaction_reference', $transaction_reference)
+         ->with('signature', hash('sha256', $signature))
+         ->with('channel_id', $channel_id)
+         ->with('url', $url);
         }
         else {
             return redirect()->back()->with('error', 'Sorry, unable to save data');
@@ -49,6 +76,46 @@ class OrdersController extends Controller
     	$title = "Matre Logistics LTD | Your Purchases";
         $orders = Order::where('user_id', Auth::user()->id)->paginate(10);
         return view('orders', compact(['title', 'cart', 'orders', 'purchases']));
+    }
+
+    public function OnePay($request) {
+    
+        $prices = [];
+        foreach($request->amount as $price ) {
+            array_push($prices, $price);
+            
+        }
+
+        $test = 'TEST';
+        $channel_id = 1001;
+        $currency = 'USD';
+        $amount = array_sum($prices) * 100;
+        $transaction_reference = str_random(12).'-'.Carbon::now();
+        $secret = 'P-1I7]62}NJsdC';
+        $signature = $test.$channel_id.$currency.$amount.$transaction_reference.$secret;
+        $url = 'https://checkout.onepay.co.zm/v1';
+
+
+        return view('verify', compact(['test', 'channel_id', 'currency', 'amount', 'transaction_reference', 'signature']));
+        /*
+        $ch = curl_init($url);
+        $payload = array(
+            'test' => 1,
+            'currency' => $currency,
+            'amount' => $amount,
+            'transaction_reference' => $transaction_reference,
+            'signature' => hash('sha256', $signature)
+        );
+
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        //curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        //    'Content-Type: text/html'));
+        $result = curl_exec($ch);
+        dd($result);
+        */
     }
 
 }
