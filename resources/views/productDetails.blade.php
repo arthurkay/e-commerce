@@ -106,7 +106,7 @@
 									</a>
 									</div>
 									<div class="row">
-										<label class="alert alert-success">{{ $offer->currency }} {{ $offer->price }} &nbsp;</label>
+										<label>{{ $offer->currency }} {{ $offer->price }} &nbsp;</label>
 									</div>
 									</div>  
 									@endforeach

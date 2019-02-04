@@ -7,7 +7,7 @@
 			<div class="col-md-10">
 				@foreach( $products as $product)
 									<div class="row col-md-3">
-										<div class="card">
+										<div class="row">
 									<h3> {{ $product->name }} </h3><br />
 									@php
 									 $image = $product->images()->where('product_id', $product->id)->first();
@@ -18,8 +18,9 @@
 										@endif
 										<p> </p>
 									</a>
-									<br />
-										<label class="alert alert-success">{{ $product->currency }} {{ $product->price }} &nbsp;</label>
+									</div>
+									<div class="row">
+										<label>{{ $product->currency }} {{ $product->price }} &nbsp;</label>
 									</div>
 									</div>  
 									@endforeach
