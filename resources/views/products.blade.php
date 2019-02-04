@@ -13,6 +13,7 @@
 								</div>
 									@foreach( $products as $product)
 									<div class="row col-md-6">
+										<div class="row">
 									<h3> {{ $product->name }} </h3><br />
 									@php
 									 $image = $product->images()->where('product_id', $product->id)->first();
@@ -21,13 +22,14 @@
 										@if ($image)
 										<img src="{{ asset('storage/'.$image->image) }}" width="100%" />
 										@endif
-										<p> {{ $product->description }}</p>
+										<p> </p>
 									</a>
-									<br />
+									</div>
+									<div class="row">
 										<label class="alert alert-success">{{ $product->currency }} {{ $product->price }} &nbsp;</label>
 									</div>  
 									@endforeach
-									<div class="">
+									<div class="row">
 										{{ $products->render() }}
 									</div>
 						</div>

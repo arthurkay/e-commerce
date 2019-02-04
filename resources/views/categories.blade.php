@@ -16,7 +16,7 @@
 										@if ($image)
 										<div class="img" style="background-image:url('{{ asset('storage/'.$image->image) }}');"></div>
 										@endif
-										<p> {{ $product->description }}</p>
+										<p> </p>
 									</a>
 									<br />
 										<label class="alert alert-success">{{ $product->currency }} {{ $product->price }} &nbsp;</label>

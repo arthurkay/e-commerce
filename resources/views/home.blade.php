@@ -16,6 +16,7 @@
 						@endphp
 						@foreach($products as $product)
 						<div class="col-md-2">
+							<div class="row">
 							<h3> {{ $product->name }} </h3><br />
 									@php
 									 $image = $product->images()->where('product_id', $product->id)->first();
@@ -25,8 +26,10 @@
 										<div class="img" style="background-image:url('{{ asset('storage/'.$image->image) }}');"></div>
 										@endif
 									</a>
-									<br />
+									</div>
+									<div class="row">
 										<label class="alert">{{ $product->currency }} {{ $product->price }} &nbsp;</label>
+									</div>
 						</div>
 						@endforeach
 					</div>

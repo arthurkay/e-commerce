@@ -92,6 +92,7 @@
 
 									@foreach( $products as $offer)
 									<div class="row col-md-4">
+										<div class="row">
 									<h3> {{ $offer->name }} </h3><br />
 									@php
 									 $image = $offer->images()->where('product_id', $offer->id)->first();
@@ -101,10 +102,12 @@
 										
 										<div class="img" style="background-image:url('{{ asset('storage/'.$image->image) }}');"></div>
 										@endif
-										<p> {{ $offer->description }}</p>
+										<p> </p>
 									</a>
-									<br />
+									</div>
+									<div class="row">
 										<label class="alert alert-success">{{ $offer->currency }} {{ $offer->price }} &nbsp;</label>
+									</div>
 									</div>  
 									@endforeach
 	</div>
