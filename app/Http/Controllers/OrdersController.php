@@ -51,7 +51,7 @@ class OrdersController extends Controller
 
         $test = 0;
         $channel_id = 1001;
-        $currency = 'USD';
+        $currency = 'ZMW';
         $amount = array_sum($prices) * 100;
         $transaction_reference = str_random(12).'-'.Carbon::now();
         $secret = 'P-1I7]62}NJsdC';
@@ -88,7 +88,7 @@ class OrdersController extends Controller
 
         $test = 'TEST';
         $channel_id = 1001;
-        $currency = 'USD';
+        $currency = 'ZMW';
         $amount = array_sum($prices) * 100;
         $transaction_reference = str_random(12).'-'.Carbon::now();
         $secret = 'P-1I7]62}NJsdC';
