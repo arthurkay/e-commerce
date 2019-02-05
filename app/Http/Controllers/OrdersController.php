@@ -38,7 +38,7 @@ class OrdersController extends Controller
         PurchaseOrder::create(['product_id' => $request->products[$i], 'amount' => $request->amount[$i], 'order_id' => $order->id]);
     }
 
-        	Cart::where('user_id', Auth::user()->id)->delete();
+        	//Cart::where('user_id', Auth::user()->id)->delete();
             //return redirect()->back()->with('success', 'Way to go');
             //$request->setMethod('POST');
             //$this->OnePay($request);
