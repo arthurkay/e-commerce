@@ -62,11 +62,13 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
                 (url()->current() == route('products')) ? $ag = 'active' : $ag = '';
                 (url()->current() == route('contact')) ? $aco = 'active' : $aco = '';
 				(url()->current() == route('blog_list')) ? $ab = 'active' : $ab = '';
+				(url()->current() == url('register')) ? $ar = 'active' : $ar = '';
                 @endphp
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
                     	@if ( Auth::guest() )
-                        <li class="{{$ah}}"><a class="waves-effect waves-dark" href="{{route('login')}}">Login</a></li> 
+                        <li class="{{$ah}}"><a class="waves-effect waves-dark" href="{{route('login')}}">Login</a></li>
+						<li class="{{$ar}}"><a class="waves-effect waves-dark" href="{{route('register')}}">Register</a></li>  
                         @endif
                         @if( Auth::Check() )
                          <li class="{{$ah}}">
@@ -189,8 +191,7 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
 					Carosel complex, <br /> 2<sup>nd</sup> Floor<br />
 					P/bag15 Rw Lusaka.</address>
 					<p>
-						<i class="fa fa-phone"></i> +260977548124 <br>
-						<i class="fa fa-phone"></i> +260953016121 <br>
+					
 						<i class="fa fa-envelope"></i> matrelogistics@gmail.com
 					</p>
 				</div>

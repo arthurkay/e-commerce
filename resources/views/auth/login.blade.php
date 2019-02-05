@@ -60,6 +60,10 @@
                                 <a class="link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
+                                OR
+                                <a class="link" href="{{ url('register') }}">
+                                    {{ __('Register') }}
+                                </a>
                             </div>
                         </div>
                     </form>

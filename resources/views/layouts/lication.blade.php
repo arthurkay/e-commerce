@@ -103,8 +103,7 @@
 					And<br />
 					Plot 312A Libala Lusaka.</address>
 					<p>
-						<i class="fa fa-phone"></i> +260977714224 <br>
-						<i class="fa fa-phone"></i> +260953020005 <br>
+				
 						<i class="fa fa-envelope"></i> matrelogistics@gmail.com
 					</p>
 				</div>

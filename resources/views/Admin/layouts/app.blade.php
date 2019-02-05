@@ -53,7 +53,7 @@
                     <a href="#"><i class="fa fa-search"></i></a>
                 </form>
             </div>
-            <div class="col-md-2 col-sm-3 col-xs-6">e
+            <div class="col-md-2 col-sm-3 col-xs-6">
 
                 <!-- Dropdown Structure -->
                 <ul id='top-menu' class='dropdown-content top-menu-sty'>
