@@ -90,7 +90,7 @@
 					 	@php
 					 	$totalCost = array_sum($prices)
 					 	@endphp
-					 	@if ($totalCost > 0)
+					 	@if (!session('amount'))
 						<div class="form-group">
 					 		<input type="submit" class="btn btn-default" value="Pay" />
 					 	</div>
