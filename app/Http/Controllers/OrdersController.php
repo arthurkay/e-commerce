@@ -50,11 +50,11 @@ class OrdersController extends Controller
         }
 
         $test = 0;
-        $channel_id = 1001;
+        $channel_id = env('CHANNEL_ID');
         $currency = 'ZMW';
         $amount = array_sum($prices) * 100;
         $transaction_reference = str_random(12).'-'.Carbon::now();
-        $secret = 'P-1I7]62}NJsdC';
+        $secret = env('SECRET');
         $signature = $channel_id.$currency.$amount.$transaction_reference.$secret;
         $url = 'https://checkout.onepay.co.zm/v1';
 
@@ -87,11 +87,11 @@ class OrdersController extends Controller
         }
 
         $test = 'TEST';
-        $channel_id = 1001;
+        $channel_id = env('CHANNEL_ID');
         $currency = 'ZMW';
         $amount = array_sum($prices) * 100;
         $transaction_reference = str_random(12).'-'.Carbon::now();
-        $secret = 'P-1I7]62}NJsdC';
+        $secret = env('SECRET');
         $signature = $test.$channel_id.$currency.$amount.$transaction_reference.$secret;
         $url = 'https://checkout.onepay.co.zm/v1';
 
