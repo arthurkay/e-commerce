@@ -29,7 +29,23 @@ Open the [.env](.env) file and set below paramaters
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=ecommerce
-DB_USERNAME=username
-DB_PASSWORD=password
+DB_DATABASE=matre
+DB_USERNAME=arthur
+DB_PASSWORD=toot
+
+CHANNEL_ID=5987
+SECRET="secret key goes here"
 ```
+
+After that, open [UsersTableSeeder](database/seeds/UsersTableSeeder.php) file and edit the user details. Replace those with yours and save the file.
+
+For test purposes run the folowing commands to create database entries.
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+The above command creates a database and populates it with data from the databases directory.
+
+
+Happy coding.
