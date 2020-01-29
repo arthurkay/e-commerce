@@ -87,7 +87,7 @@ class OrdersController extends Controller
         }
 
         $test = 'TEST';
-        $channel_id = env('CHANNEL_ID');
+        $channel_id = env('CHANNEL_ID');array_sum
         $currency = 'ZMW';
         $amount = array_sum($prices) * 100;
         $transaction_reference = str_random(12).'-'.Carbon::now();

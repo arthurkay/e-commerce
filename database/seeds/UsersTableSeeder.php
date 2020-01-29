@@ -18,13 +18,6 @@ class UsersTableSeeder extends Seeder
         User::truncate();
 
         User::create([
-            'name' => 'Marvin Phiri',
-            'email' => 'marvinphirimv@gmail.com',
-            'password' => Hash::make( 'TestP@ss123' ),
-            'email_verified_at' => Carbon::now()
-        ]);
-
-        User::create([
             'name' => 'Arthur Kalikiti',
             'email' => 'arthurkalikiti@gmail.com',
             'password' => Hash::make( 'TestP@ss123' ),
