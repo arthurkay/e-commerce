@@ -2,15 +2,23 @@
 
 ## Introduction
 To get started with this project, first clone it to your local machine
+
 *Note* Make sure you have composer installed
 
 ```bash
 git clone https://github.com/arthurkay/e-commerce.git
 ```
 
+*Note* All commands should be entered from the top level directory of this project.
+
 Then copy the .env.example to .env
 ```bash
 cp .env.example .env
+```
+
+Download the dependencies by typing
+```bash
+composer install
 ```
 
 After that, generate a token key
@@ -46,6 +54,12 @@ php artisan migrate:fresh --seed
 ```
 
 The above command creates a database and populates it with data from the databases directory.
+
+To run a development server, type:
+Copy and paste the generated url in your browser.
+```bash
+php artisan serve
+```
 
 
 Happy coding.
